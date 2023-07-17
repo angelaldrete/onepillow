@@ -1,0 +1,40 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar .section-list .sections:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: var(--text-color-secondary);
+  margin: 1rem 0;
+}
+
+.navbar .links {
+  color: var(--text-color-light);
+  text-align: center;
+  padding: 1rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  will-change: transform;
+}
+
+.navbar .links:hover {
+  color: var(--secondary-color);
+  transform: skew(-10deg);
+}
+
+.navbar .links a {
+  display: block;
+}
+
+.navbar .links svg {
+  height: 2.4rem;
+  transition: fill 0.2s ease;
+}
