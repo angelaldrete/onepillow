@@ -1,19 +1,18 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCalendar,
-  faCog,
-  faHome,
-  faPeopleGroup,
-  faSignOut,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+  MdOutlineDashboardCustomize,
+  MdPeople,
+  MdOutlineAccountCircle,
+  MdOutlineSettings,
+  MdOutlineLogout,
+  MdOutlineCalendarMonth,
+} from "react-icons/md";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
+import Logo from "../Logo";
 
 interface Section {
   title?: string;
-  imageSrc?: string;
   links?: Link[];
 }
 
@@ -25,25 +24,22 @@ interface Link {
 
 const sections: Section[] = [
   {
-    imageSrc: "/logo.svg",
-  },
-  {
     title: "Main Menu",
     links: [
       {
         href: "/",
-        icon: <FontAwesomeIcon icon={faHome} />,
+        icon: <MdOutlineDashboardCustomize />,
         text: "Dashboard",
       },
       {
         href: "/calendar",
-        icon: <FontAwesomeIcon icon={faCalendar} />,
+        icon: <MdOutlineCalendarMonth />,
         text: "Calendar",
       },
       {
-        href: "/clients",
-        icon: <FontAwesomeIcon icon={faPeopleGroup} />,
-        text: "Clients",
+        href: "/customers",
+        icon: <MdPeople />,
+        text: "Customers",
       },
     ],
   },
@@ -52,22 +48,17 @@ const sections: Section[] = [
     links: [
       {
         href: "/account",
-        icon: <FontAwesomeIcon icon={faUser} />,
+        icon: <MdOutlineAccountCircle />,
         text: "Profile",
       },
       {
         href: "/settings",
-        icon: <FontAwesomeIcon icon={faCog} />,
+        icon: <MdOutlineSettings />,
         text: "Settings",
       },
-    ],
-  },
-  {
-    title: "Logout",
-    links: [
       {
         href: "/",
-        icon: <FontAwesomeIcon icon={faSignOut} />,
+        icon: <MdOutlineLogout />,
         text: "Logout",
       },
     ],
@@ -77,12 +68,21 @@ const sections: Section[] = [
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      <ul className={styles["section-list"]}>
-        {sections.map((section) => (
-          <li key={section.title} className={styles["sections"]}>
+      <ul className={styles.menu}>
+        <li className={styles.logo}>
+          <Logo />
+        </li>
+        {sections.map((section, i) => (
+          <li key={section.title} className={styles.sections}>
             <ul>
-              {section.links?.map((link) => (
-                <li key={link.text} className={styles.links}>
+              {section.links?.map((link, j) => (
+                <li
+                  key={link.text}
+                  className={styles.links}
+                  style={{
+                    animationDelay: `${(j + i * 3 + 0.1) / 10}s`,
+                  }}
+                >
                   <Link href={link.href}>{link.icon}</Link>
                 </li>
               ))}
