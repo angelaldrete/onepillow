@@ -6,3 +6,8 @@
   width: 100%;
   text-align: center;
 }
+
+.home .metrics p,
+.home .metrics h2 {
+  color: var(--text-color-light);
+}

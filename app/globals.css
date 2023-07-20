@@ -1,14 +1,16 @@
 :root {
-  --primary-color: #8639e4;
-  --secondary-color: #df4496;
+  --primary-color: #df4496;
+  --secondary-color: #561b5d;
   --tertiary-color: #dfb145;
-  --background-color: #fcf3fe;
-  --card-color: #fffbff;
-  --card-box-shadow: 10px 10px 10px rgba(180, 121, 212, 0.15);
-  --text-color: #1d1620;
+  --quaternary-color: #002500;
+  --quinary-color: #1B9AAA;
+  --background-color: #f8f9ff;
+  --card-color: #ffffff;
+  --card-box-shadow: 4px 4px 5px rgba(231, 69, 163, 0.05);
+  --text-color: #20161e;
   --text-color-light: #f2f2f2;
-  --text-color-dark: #1a1a1a;
-  --text-color-secondary: #9a929e;
+  --text-color-dark: #28232a;
+  --text-color-secondary: #79737c;
   --text-color-tertiary: #666666;
 }
 
@@ -19,7 +21,7 @@
     --tertiary-color: #dfb145;
     --background-color: #f9f1fe;
     --card-color: #fefbff;
-    --card-box-shadow: 10px 0 40px rgba(212, 159, 240, 0.15);
+    --card-box-shadow: 1px 0 1px rgba(212, 159, 240, 0.15);
     --text-color: #f2f2f2;
     --text-color-light: #f2f2f2;
     --text-color-dark: #1a1a1a;
@@ -67,6 +69,7 @@ main {
   margin-top: 5rem;
   margin-left: 8rem;
   margin-right: 3rem;
+  margin-bottom: 10rem;
   width: 100%;
   height: 100%;
   display: flex;
