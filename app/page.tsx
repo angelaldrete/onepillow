@@ -44,7 +44,7 @@ export default function Home() {
             animationDelay: `${3 * 0.1}s`,
           }}
         >
-          <p>Average Reservations / Month</p>
+          <p>Average Reservations</p>
           <h2 className="subtitle">24</h2>
         </Card>
       </div>

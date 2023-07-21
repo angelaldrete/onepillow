@@ -1,13 +1,22 @@
 .home .metrics {
   display: grid;
   place-items: center;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
   width: 100%;
   text-align: center;
+}
+
+.home .metrics > div {
+  min-height: clamp(3rem, 40vw, 12rem);
 }
 
 .home .metrics p,
 .home .metrics h2 {
   color: var(--text-color-light);
 }
+
+/* .home .metrics h2 {
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  font-weight: bold;
+} */
