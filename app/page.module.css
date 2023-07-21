@@ -16,7 +16,16 @@
   color: var(--text-color-light);
 }
 
-/* .home .metrics h2 {
-  font-size: clamp(2.4rem, 5vw, 3.2rem);
-  font-weight: bold;
-} */
+.welcome {
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .home .metrics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .home .metrics > div {
+    min-height: clamp(3rem, 20vw, 15rem);
+  }
+}
