@@ -1,0 +1,111 @@
+"use client";
+import React from "react";
+import {
+  ResponsiveContainer,
+  AreaChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Area,
+  Tooltip,
+} from "recharts";
+import { format, parseISO, subDays } from "date-fns";
+
+interface Data {
+  date: string;
+  value: number;
+}
+
+const data: Data[] = [];
+
+for (let num = 30; num >= 0; num--) {
+  data.push({
+    date: format(subDays(new Date(), num), "yyyy-MM-dd"),
+    value: Math.floor(Math.random() * 1000),
+  });
+}
+
+const ReservationsPerMonth = () => {
+  return (
+    <ResponsiveContainer
+      width="100%"
+      height={window.innerWidth <= 768 ? 200 : 400}
+    >
+      <AreaChart data={data}>
+        <defs>
+          <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#df4496" stopOpacity={1} />
+            <stop offset="75%" stopColor="#561b5d" stopOpacity={1} />
+          </linearGradient>
+        </defs>
+
+        <Area dataKey="value" stroke="#561b5d" fill="url(#color)" />
+
+        <XAxis
+          dataKey="date"
+          axisLine={false}
+          tickLine={false}
+          tickFormatter={(str) => {
+            const date = parseISO(str);
+            return format(date, "MMM");
+          }}
+          fontSize={
+            window.innerWidth <= 768
+              ? "1rem"
+              : window.innerWidth <= 1024
+              ? "1.2rem"
+              : "1.6rem"
+          }
+          tickCount={window.innerWidth <= 768 ? 2 : 5}
+        />
+
+        <YAxis
+          dataKey="value"
+          axisLine={false}
+          tickLine={false}
+          fontSize={
+            window.innerWidth <= 768
+              ? "1rem"
+              : window.innerWidth <= 1024
+              ? "1.2rem"
+              : "1.6rem"
+          }
+          tickCount={
+            // in small screens, we only want to show 3 ticks, otherwise 5
+            window.innerWidth <= 768 ? 3 : 5
+          }
+          tickFormatter={(number) => `${number.toFixed(2)}`}
+        />
+
+        <Tooltip
+          contentStyle={{
+            background: "transparent",
+            border: "none",
+            borderRadius: "10px",
+            fontSize: "16px",
+            color: "white",
+          }}
+          formatter={(value: number) => `${value.toFixed(2)}`}
+          // content={<CustomTooltip />}
+        />
+
+        <CartesianGrid opacity={0.1} vertical={false} />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+};
+
+const CustomTooltip = ({ active, payload, label }: any) => {
+  if (active) {
+    return (
+      <div className="tooltip">
+        <h4>{format(parseISO(label), "eeee, d MMM, yyyy")}</h4>
+        <p>{`$ ${payload[0].value.toFixed(2)}`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
+
+export default ReservationsPerMonth;

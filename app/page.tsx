@@ -1,34 +1,7 @@
-"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Card from "./components/Card";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend,
-  defaults,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend
-);
-
-defaults.font.family = "Poppins";
-defaults.font.size = 18;
+import ReservationsPerMonth from "./components/ReservationsPerMonth";
 
 export default function Home() {
   return (
@@ -88,53 +61,7 @@ export default function Home() {
         >
           <Card>
             <p>Reservations per month</p>
-            <Line
-              data={{
-                labels: [
-                  "January",
-                  "February",
-                  "March",
-                  "April",
-                  "May",
-                  "June",
-                  "July",
-                ],
-                datasets: [
-                  {
-                    label: "Reservations",
-                    data: [12, 19, 3, 5, 2, 3, 15],
-                    fill: false,
-                    tension: 0.4,
-                    borderColor: "#df4496",
-                    pointBorderWidth: 4,
-                  },
-                ],
-              }}
-              options={{
-                responsive: true,
-                font: {
-                  size: 18,
-                },
-                layout: {
-                  padding: {
-                    left: 20,
-                    right: 20,
-                    top: 20,
-                    bottom: 20,
-                  },
-                },
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                  },
-                },
-              }}
-            />
+            <ReservationsPerMonth />
           </Card>
         </div>
       </section>
