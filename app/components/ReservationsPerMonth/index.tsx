@@ -28,8 +28,12 @@ for (let num = 30; num >= 0; num--) {
 const ReservationsPerMonth = () => {
   return (
     <ResponsiveContainer
+      minWidth={150}
+      aspect={3 / 4}
       width="100%"
-      height={window.innerWidth <= 768 ? 200 : 400}
+      minHeight={200}
+      height="100%"
+      maxHeight={400}
     >
       <AreaChart data={data}>
         <defs>
@@ -47,39 +51,29 @@ const ReservationsPerMonth = () => {
           tickLine={false}
           tickFormatter={(str) => {
             const date = parseISO(str);
-            return format(date, "MMM");
+            if (date.getDate() % 7 === 0) {
+              return format(date, "MMM, d");
+            } else {
+              return "";
+            }
           }}
-          fontSize={
-            window.innerWidth <= 768
-              ? "1rem"
-              : window.innerWidth <= 1024
-              ? "1.2rem"
-              : "1.6rem"
-          }
-          tickCount={window.innerWidth <= 768 ? 2 : 5}
+          allowDataOverflow
+          fontSize={"clamp(1rem, 1vw, 1.6rem)"}
         />
 
         <YAxis
           dataKey="value"
           axisLine={false}
           tickLine={false}
-          fontSize={
-            window.innerWidth <= 768
-              ? "1rem"
-              : window.innerWidth <= 1024
-              ? "1.2rem"
-              : "1.6rem"
-          }
-          tickCount={
-            // in small screens, we only want to show 3 ticks, otherwise 5
-            window.innerWidth <= 768 ? 3 : 5
-          }
           tickFormatter={(number) => `${number.toFixed(2)}`}
+          allowDataOverflow
+          interval={0}
+          fontSize={"clamp(1rem, 1vw, 1.6rem)"}
         />
 
         <Tooltip
           contentStyle={{
-            background: "transparent",
+            background: "black",
             border: "none",
             borderRadius: "10px",
             fontSize: "16px",
@@ -89,7 +83,7 @@ const ReservationsPerMonth = () => {
           // content={<CustomTooltip />}
         />
 
-        <CartesianGrid opacity={0.1} vertical={false} />
+        <CartesianGrid opacity={0.3} vertical={false} />
       </AreaChart>
     </ResponsiveContainer>
   );

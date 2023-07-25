@@ -51,19 +51,21 @@ export default function Home() {
           </Card>
         </div>
       </section>
-      <section className="stats">
-        <h1 className="title">Stats</h1>
-        <div
-          className={styles.stats}
-          style={{
-            width: "99%",
-          }}
-        >
-          <Card>
+      <section>
+        <h2 className="title">Stats</h2>
+        <div>
+          <Card
+            style={{
+              padding: "2rem",
+            }}
+          >
             <p>Reservations per month</p>
             <ReservationsPerMonth />
           </Card>
         </div>
+      </section>
+      <section>
+        <h2 className="title">Recent</h2>
       </section>
     </div>
   );
