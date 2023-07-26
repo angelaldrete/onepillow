@@ -9,7 +9,8 @@ import {
   Area,
   Tooltip,
 } from "recharts";
-import { format, parseISO, subDays } from "date-fns";
+import { clamp, format, parseISO, subDays } from "date-fns";
+import { useState, useEffect } from "react";
 
 interface Data {
   date: string;
@@ -26,6 +27,22 @@ for (let num = 30; num >= 0; num--) {
 }
 
 const ReservationsPerMonth = () => {
+  const [showAxises, setShowAxises] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isSmallScreen = window.matchMedia("(max-width: 600px)").matches;
+      setShowAxises(!isSmallScreen);
+    };
+
+    handleResize(); // Initial check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <ResponsiveContainer
       minWidth={150}
@@ -59,6 +76,7 @@ const ReservationsPerMonth = () => {
           }}
           allowDataOverflow
           fontSize={"clamp(1rem, 1vw, 1.6rem)"}
+          hide={!showAxises}
         />
 
         <YAxis
@@ -69,6 +87,7 @@ const ReservationsPerMonth = () => {
           allowDataOverflow
           interval={0}
           fontSize={"clamp(1rem, 1vw, 1.6rem)"}
+          hide={!showAxises}
         />
 
         <Tooltip
@@ -80,7 +99,7 @@ const ReservationsPerMonth = () => {
             color: "white",
           }}
           formatter={(value: number) => `${value.toFixed(2)}`}
-          // content={<CustomTooltip />}
+          content={<CustomTooltip />}
         />
 
         <CartesianGrid opacity={0.3} vertical={false} />
@@ -92,9 +111,22 @@ const ReservationsPerMonth = () => {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active) {
     return (
-      <div className="tooltip">
+      <div
+        style={{
+          background: "#222",
+          padding: "1rem",
+          color: "white",
+          borderRadius: "10px",
+          fontSize: "clamp(1rem, 1vw, 1.6rem)",
+        }}
+      >
         <h4>{format(parseISO(label), "eeee, d MMM, yyyy")}</h4>
-        <p>{`$ ${payload[0].value.toFixed(2)}`}</p>
+        <p
+          style={{
+            color: "#df4496",
+            fontSize: "clamp(1rem, 1vw, 1.8rem)",
+          }}
+        >{`$ ${payload[0].value.toFixed(2)}`}</p>
       </div>
     );
   }

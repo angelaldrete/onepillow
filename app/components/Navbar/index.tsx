@@ -6,6 +6,9 @@ import {
   MdOutlineSettings,
   MdOutlineLogout,
   MdOutlineCalendarMonth,
+  MdBed,
+  MdOutlineDarkMode,
+  MdOutlineLightMode,
 } from "react-icons/md";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
@@ -37,6 +40,11 @@ const sections: Section[] = [
         text: "Calendar",
       },
       {
+        href: "/rooms",
+        icon: <MdBed />,
+        text: "Rooms",
+      },
+      {
         href: "/customers",
         icon: <MdPeople />,
         text: "Customers",
@@ -44,7 +52,7 @@ const sections: Section[] = [
     ],
   },
   {
-    title: "Account",
+    title: "Account & Preferences",
     links: [
       {
         href: "/account",
@@ -83,7 +91,7 @@ const Navbar = () => {
                     animationDelay: `${(j + i * 3 + 0.1) / 10}s`,
                   }}
                 >
-                  <Link href={link.href}>{link.icon}</Link>
+                  <Link href={link.href ?? ""}>{link.icon}</Link>
                 </li>
               ))}
             </ul>
