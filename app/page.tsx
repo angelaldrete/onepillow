@@ -1,57 +1,17 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import Card from "./components/Card";
-import ReservationsPerMonth from "./components/ReservationsPerMonth";
+import OverallMetrics from "./dashboard/components/OverallMetrics";
+import DataChart from "./components/DataChart";
 
-export default function Home() {
+export default function Dashboard() {
   return (
-    <div className={styles.home}>
-      <section className={styles.welcome}>
-        <h1 className="title">Welcome</h1>
-        <div className={styles.metrics}>
-          <Card
-            style={{
-              backgroundImage:
-                "linear-gradient(45deg, var(--primary-color), var(--secondary-color))",
-              animationDelay: `${0 * 0.2}s`,
-            }}
-          >
-            <p>Your reservations</p>
-            <h2 className="subtitle">24</h2>
-          </Card>
-          <Card
-            style={{
-              backgroundImage:
-                "linear-gradient(45deg, var(--quinary-color), var(--secondary-color))",
-              animationDelay: `${1 * 0.2}s`,
-            }}
-          >
-            <p>Total reservations</p>
-            <h2 className="subtitle">124</h2>
-          </Card>
-          <Card
-            style={{
-              backgroundImage:
-                "linear-gradient(45deg, var(--primary-color), var(--tertiary-color))",
-              animationDelay: `${2 * 0.2}s`,
-            }}
-          >
-            <p>Overall Profit</p>
-            <h2 className="subtitle">$ 124</h2>
-          </Card>
-          <Card
-            style={{
-              backgroundImage:
-                "linear-gradient(45deg, var(--tertiary-color), var(--quinary-color))",
-              animationDelay: `${3 * 0.2}s`,
-            }}
-          >
-            <p>Average Reservations</p>
-            <h2 className="subtitle">24</h2>
-          </Card>
-        </div>
+    <div className="dashboard">
+      <header className="dashboard__header">
+        <h1 className="dashboard__title">Welcome</h1>
+      </header>
+      <section className="overall-metrics">
+        <OverallMetrics />
       </section>
-      <section>
+      <section className="monthlyreservations">
         <h2 className="title">Stats</h2>
         <div>
           <Card
@@ -60,7 +20,7 @@ export default function Home() {
             }}
           >
             <p>Reservations per month</p>
-            <ReservationsPerMonth />
+            <DataChart />
           </Card>
         </div>
       </section>

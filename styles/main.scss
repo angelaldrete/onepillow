@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import "variables";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
   --primary-color: #df4496;
   --secondary-color: #561b5d;
   --tertiary-color: #dfb145;
   --quaternary-color: #002500;
-  --quinary-color: #1B9AAA;
+  --quinary-color: #1b9aaa;
   --background-color: #f8f9ff;
   --card-color: #ffffff;
   --card-box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
@@ -21,7 +22,7 @@
   --secondary-color: #561b5d;
   --tertiary-color: #dfb145;
   --quaternary-color: #002500;
-  --quinary-color: #1B9AAA;
+  --quinary-color: #1b9aaa;
   --background-color: #20161e;
   --card-color: #28232a;
   --card-box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
@@ -47,7 +48,7 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -59,12 +60,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
 
 main {
@@ -85,20 +80,27 @@ ul {
 
 .title {
   color: var(--text-color);
-  font-size: 3.2rem;
+  font-size: clamp(2.6rem, 5vw, 3.2rem);
   font-weight: bold;
-  margin-bottom: 2rem; 
+  margin-bottom: clamp(1rem, 2vw, 2rem);
 }
 
 p {
   color: var(--text-color-secondary);
   font-size: clamp(1rem, 2vw, 1.6rem);
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 .subtitle {
   color: var(--text-color);
   font-size: clamp(2.4rem, 5vw, 3.2rem);
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
 }
+
+@import "card";
+@import "logo";
+@import "navbar";
+@import "dashboard/chart";
+@import "dashboard/metrics";
+@import "dashboard/recent";

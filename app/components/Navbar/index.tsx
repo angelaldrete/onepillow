@@ -7,25 +7,11 @@ import {
   MdOutlineLogout,
   MdOutlineCalendarMonth,
   MdBed,
-  MdOutlineDarkMode,
-  MdOutlineLightMode,
 } from "react-icons/md";
-import styles from "./Navbar.module.css";
-import Link from "next/link";
 import Logo from "../Logo";
+import NavbarSectionItem from "./NavbarSectionItem";
 
-interface Section {
-  title?: string;
-  links?: Link[];
-}
-
-interface Link {
-  href: string;
-  icon: JSX.Element;
-  text: string;
-}
-
-const sections: Section[] = [
+const navbarSections: NavbarSection[] = [
   {
     title: "Main Menu",
     links: [
@@ -75,27 +61,18 @@ const sections: Section[] = [
 
 const Navbar = () => {
   return (
-    <nav className={styles.navbar}>
-      <ul className={styles.menu}>
-        <li className={styles.logo}>
+    <nav className="navbar">
+      <ul className="navbar__main-list">
+        <li className="navbar__logo-item">
           <Logo />
         </li>
-        {sections.map((section, i) => (
-          <li key={section.title} className={styles.sections}>
-            <ul>
-              {section.links?.map((link, j) => (
-                <li
-                  key={link.text}
-                  className={styles.links}
-                  style={{
-                    animationDelay: `${(j + i * 3 + 0.1) / 10}s`,
-                  }}
-                >
-                  <Link href={link.href ?? ""}>{link.icon}</Link>
-                </li>
-              ))}
-            </ul>
-          </li>
+        {navbarSections.map((navbarSection, navbarIdx) => (
+          <NavbarSectionItem
+            key={navbarSection.title}
+            title={navbarSection.title}
+            links={navbarSection.links}
+            idx={navbarIdx}
+          />
         ))}
       </ul>
     </nav>

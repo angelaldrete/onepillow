@@ -11,13 +11,9 @@ import {
 } from "recharts";
 import { clamp, format, parseISO, subDays } from "date-fns";
 import { useState, useEffect } from "react";
+import ChartData from "@/app/types/ChartData";
 
-interface Data {
-  date: string;
-  value: number;
-}
-
-const data: Data[] = [];
+const data: ChartData[] = [];
 
 for (let num = 30; num >= 0; num--) {
   data.push({
@@ -26,7 +22,7 @@ for (let num = 30; num >= 0; num--) {
   });
 }
 
-const ReservationsPerMonth = () => {
+const DataChart = () => {
   const [showAxises, setShowAxises] = useState(true);
 
   useEffect(() => {
@@ -134,4 +130,4 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-export default ReservationsPerMonth;
+export default DataChart;
