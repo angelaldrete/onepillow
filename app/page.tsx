@@ -1,5 +1,5 @@
 import Card from "./components/Card";
-import OverallMetrics from "./dashboard/components/OverallMetrics";
+import OverallMetrics from "./dashboard/modules/OverallMetrics/components/OverallMetrics";
 import DataChart from "./components/DataChart";
 
 export default function Dashboard() {
@@ -13,18 +13,12 @@ export default function Dashboard() {
       </section>
       <section className="monthlyreservations">
         <h2 className="title">Stats</h2>
-        <div>
-          <Card
-            style={{
-              padding: "2rem",
-            }}
-          >
-            <p>Reservations per month</p>
-            <DataChart />
-          </Card>
-        </div>
+        <Card>
+          <p>Reservations per month</p>
+          <DataChart />
+        </Card>
       </section>
-      <section>
+      <section className="recent">
         <h2 className="title">Recent</h2>
       </section>
     </div>

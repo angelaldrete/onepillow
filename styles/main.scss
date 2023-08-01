@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixin";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
@@ -101,6 +102,4 @@ p {
 @import "card";
 @import "logo";
 @import "navbar";
-@import "dashboard/chart";
-@import "dashboard/metrics";
-@import "dashboard/recent";
+@import "dashboard/index";
