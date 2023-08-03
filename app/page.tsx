@@ -1,6 +1,7 @@
 import Card from "./components/Card";
 import OverallMetrics from "./dashboard/modules/OverallMetrics/components/OverallMetrics";
 import DataChart from "./components/DataChart";
+import Recent from "./dashboard/modules/OverallMetrics/components/Recent";
 
 export default function Dashboard() {
   return (
@@ -20,6 +21,9 @@ export default function Dashboard() {
       </section>
       <section className="recent">
         <h2 className="title">Recent</h2>
+        <Card>
+          <Recent />
+        </Card>
       </section>
     </div>
   );

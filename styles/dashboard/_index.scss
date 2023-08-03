@@ -1,5 +1,9 @@
 .dashboard {
   width: 100%;
+
+  &__title {
+    margin-bottom: 2rem;
+  }
 }
 
 @import "metrics";

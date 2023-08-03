@@ -199,37 +199,46 @@ p {
 .dashboard {
   width: 100%;
 }
+.dashboard__title {
+  margin-bottom: 2rem;
+}
 
 .overall-metrics {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   width: 100%;
   display: block;
 }
 .overall-metrics__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: clamp(1.5rem, 2vw, 2rem);
   width: 100%;
 }
 .overall-metrics__item div {
-  min-height: 10rem;
-  height: 20vh;
-  max-height: 15rem;
+  height: clamp(11rem, 15vw, 12rem);
 }
 .overall-metrics__item p,
 .overall-metrics__item .metric-data {
   color: var(--text-color-light);
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 .overall-metrics__item .metric-data {
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 5vw, 3rem);
 }
 
 .monthlyreservations {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   width: 100%;
 }
 .monthlyreservations .card {
   width: 100%;
   height: 100%;
   padding: 2rem;
+  animation-delay: 1.5s;
+}
+.monthlyreservations .card .recharts-responsive-container,
+.monthlyreservations .card .recharts-wrapper,
+.monthlyreservations .card svg {
+  width: 100% !important;
+  height: 100% !important;
 }/*# sourceMappingURL=main.css.map */
