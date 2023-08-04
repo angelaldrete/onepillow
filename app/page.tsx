@@ -1,7 +1,7 @@
 import Card from "./components/Card";
-import OverallMetrics from "./dashboard/modules/OverallMetrics/components/OverallMetrics";
+import OverallMetrics from "./dashboard/components/OverallMetrics";
 import DataChart from "./components/DataChart";
-import Recent from "./dashboard/modules/OverallMetrics/components/Recent";
+import Recent from "./dashboard/components/Recent";
 
 export default function Dashboard() {
   return (

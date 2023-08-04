@@ -11,10 +11,3 @@
   opacity: 0;
   transform: translateX(200%);
 }
-
-@keyframes card-swipe {
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}

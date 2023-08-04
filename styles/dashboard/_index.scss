@@ -3,6 +3,9 @@
 
   &__title {
     margin-bottom: 2rem;
+    animation: text-appear 0.3s ease forwards;
+    opacity: 0;
+    transform: translateY(2rem);
   }
 }
 

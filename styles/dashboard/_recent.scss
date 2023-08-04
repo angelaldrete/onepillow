@@ -1,0 +1,41 @@
+.recent {
+  margin-bottom: 5rem;
+  .title {
+    margin-bottom: 2rem;
+    animation: text-appear 0.3s ease forwards;
+    opacity: 0;
+    transform: translateY(2rem);
+    animation-delay: 1.8s;
+  }
+
+  .card {
+    animation-delay: 2.1s;
+    padding: clamp(2rem, 2vw, 3.5rem);
+  }
+
+  &__list {
+    display: grid;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: start;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    padding: clamp(1rem, 2vw, 1.5rem);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    &:nth-child(odd) {
+      background-color: var(--background-color);
+    }
+    &--header * {
+      font-weight: bold;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+    }
+
+    &:hover:not(:first-child) {
+      transform: scale(1.02);
+      box-shadow: var(--card-box-shadow);
+      cursor: pointer;
+    }
+  }
+}

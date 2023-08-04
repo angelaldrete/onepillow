@@ -1,9 +1,13 @@
 import React from "react";
+import CalendarMonth from "./components/Calendar";
 
 const Calendar = () => {
   return (
-    <div>
-      <h1>Calendar</h1>
+    <div className="calendar">
+      <header className="calendar__header">
+        <h1 className="calendar__title">Calendar</h1>
+      </header>
+      <CalendarMonth />
     </div>
   );
 };

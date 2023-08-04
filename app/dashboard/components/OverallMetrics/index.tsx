@@ -8,13 +8,15 @@ const OverallMetrics = () => {
     <>
       <ul className="overall-metrics__list">
         {listItems.map((item) => (
-          <MetricItem
-            key={item.id}
-            id={item.id}
-            metricTitle={item.metricTitle}
-            metricData={item.metricData}
-            gradientColors={item.gradientColors}
-          />
+          <li key={item.id} className="overall-metrics__item">
+            <MetricItem
+              key={item.id}
+              id={item.id}
+              metricTitle={item.metricTitle}
+              metricData={item.metricData}
+              gradientColors={item.gradientColors}
+            />
+          </li>
         ))}
       </ul>
     </>

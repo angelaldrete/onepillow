@@ -1,8 +1,7 @@
 interface RecentReservation {
-  id: string;
+  id: number;
   name: string;
   date: string;
   status: string;
-  type: string;
-  room: string;
+  roomId: number;
 }

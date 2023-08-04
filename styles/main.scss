@@ -99,7 +99,9 @@ p {
   margin-bottom: clamp(0.5rem, 1vw, 1rem);
 }
 
+@import "animations";
 @import "card";
 @import "logo";
 @import "navbar";
 @import "dashboard/index";
+@import "calendar/index";
