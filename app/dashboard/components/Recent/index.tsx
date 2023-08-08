@@ -17,6 +17,7 @@ const Recent = () => {
         </li>
         {recentItems.map((item) => (
           <li
+            key={item.id}
             className="recent__item"
             style={{ animationDelay: `${item.id * 0.2}s` }}
           >
