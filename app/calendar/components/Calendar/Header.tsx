@@ -1,5 +1,6 @@
 import React from "react";
 import MonthControlsAction from "../../types/MonthControlsAction";
+import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 
 interface HeaderProps {
   handleMonthControls: (action: MonthControlsAction) => void;
@@ -15,10 +16,10 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <div className="calendar-month__header">
       <button
-        className="calendar-month__header__button"
+        className="calendar-month__header__btn"
         onClick={() => handleMonthControls(MonthControlsAction.Previous)}
       >
-        Previous
+        <MdArrowLeft />
       </button>
       <h2 className="calendar-month__header__title">
         {new Date(year, month, 0).toLocaleString("default", {
@@ -27,10 +28,10 @@ const Header: React.FC<HeaderProps> = ({
         })}
       </h2>
       <button
-        className="calendar-month__header__button"
+        className="calendar-month__header__btn"
         onClick={() => handleMonthControls(MonthControlsAction.Next)}
       >
-        Next
+        <MdArrowRight />
       </button>
     </div>
   );

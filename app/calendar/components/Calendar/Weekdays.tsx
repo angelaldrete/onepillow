@@ -14,8 +14,8 @@ const Weekdays = () => {
 
   return (
     <ul className="calendar-month__weekdays">
-      {weekdays.map((weekday) => (
-        <li className="calendar-month__weekdays__weekday">
+      {weekdays.map((weekday, index) => (
+        <li key={index} className="calendar-month__weekdays__weekday">
           <Weekday weekday={weekday} />
         </li>
       ))}

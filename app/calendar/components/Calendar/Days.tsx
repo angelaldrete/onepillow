@@ -9,7 +9,7 @@ const Days: React.FC<DaysProps> = ({ days }) => {
   return (
     <ul className="calendar-month__days">
       {days.map((day) => (
-        <li className="calendar-month__days__day">
+        <li key={day} className="calendar-month__days__day">
           <Day day={day} />
         </li>
       ))}
