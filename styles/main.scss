@@ -10,7 +10,7 @@
   --quinary-color: #1b9aaa;
   --background-color: #f8f9ff;
   --card-color: #ffffff;
-  --card-box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
+  --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
   --text-color: #20161e;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -27,7 +27,7 @@
   --quinary-color: #1b9aaa;
   --background-color: #20161e;
   --card-color: #28232a;
-  --card-box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
+  --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
   --text-color: #f2f2f2;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -101,6 +101,7 @@ p {
 }
 
 @import "animations";
+@import "btn";
 @import "card";
 @import "logo";
 @import "navbar";

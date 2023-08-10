@@ -4,6 +4,7 @@ import Header from "./Header";
 import Days from "./Days";
 import Weekdays from "./Weekdays";
 import MonthControlsAction from "../../types/MonthControlsAction";
+import AddButton from "@/app/components/Button/AddButton";
 
 const CalendarMonth = () => {
   const [date, setDate] = React.useState(new Date());
@@ -36,6 +37,10 @@ const CalendarMonth = () => {
         <Weekdays />
         <Days days={Array.from(Array(daysInMonth).keys())} />
       </section>
+      <AddButton
+        onClick={() => console.log("clicked")}
+        icon={<i className="fas fa-plus"></i>}
+      />
     </div>
   );
 };

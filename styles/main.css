@@ -7,7 +7,7 @@
   --quinary-color: #1b9aaa;
   --background-color: #f8f9ff;
   --card-color: #ffffff;
-  --card-box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
+  --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
   --text-color: #20161e;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -24,7 +24,7 @@
   --quinary-color: #1b9aaa;
   --background-color: #20161e;
   --card-color: #28232a;
-  --card-box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
+  --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
   --text-color: #f2f2f2;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -113,12 +113,35 @@ p {
     opacity: 1;
   }
 }
+.btn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn--add {
+  position: fixed;
+  bottom: clamp(2rem, 5vw, 3rem);
+  right: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-color-light);
+  padding: 0.5rem;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
+  background-image: linear-gradient(to left top, var(--primary-color) 0%, var(--secondary-color) 80%);
+}
+.btn--add:hover {
+  background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 20%);
+}
+
 .card {
   position: relative;
   padding: 1.5rem 2rem 2rem;
   width: 100%;
   border-radius: 2rem;
-  box-shadow: var(--card-box-shadow);
+  box-shadow: var(--box-shadow);
   background-color: var(--card-color);
   transition: all 0.3s ease;
   text-align: left;
@@ -154,7 +177,7 @@ p {
   padding-right: 1rem;
   padding-bottom: 2rem;
   z-index: 20;
-  box-shadow: var(--card-box-shadow);
+  box-shadow: var(--box-shadow);
 }
 .navbar__main-list {
   position: relative;
@@ -310,8 +333,8 @@ p {
 }
 .calendar-day__number {
   background-color: var(--card-color);
-  font-size: 1rem;
-  height: clamp(7.5rem, 10vw, 10rem);
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  height: clamp(7.5rem, 10vw, 17rem);
   padding: clamp(0.5rem, 2vw, 2.5rem);
 }
 .calendar-weekday {
@@ -322,16 +345,15 @@ p {
   padding: clamp(1rem, 1vw, 1.5rem);
 }
 .calendar-weekday--tablet {
+  color: var(--text-color-light);
   display: none;
+  padding: clamp(1rem, 1vw, 1.5rem);
+  font-size: clamp(1.2rem, 1vw, 1.6rem);
 }
 
-@media (min-width: 768px) {
-  .calendar-weekday {
-    display: none;
-  }
-  .calendar-weekday--tablet {
-    display: block;
-  }
+.calendar-month {
+  max-width: 200rem;
+  margin: 0 auto;
 }
 .calendar-month__header {
   display: flex;
@@ -354,6 +376,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .calendar-month__weekdays {
   display: grid;
@@ -365,4 +388,22 @@ p {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   border-left: 0.1rem solid var(--calendar-outline-color);
+}
+
+@media (min-width: 768px) {
+  .calendar-weekday {
+    display: none;
+  }
+  .calendar-weekday--tablet {
+    display: block;
+  }
+  .calendar-month__header {
+    justify-content: center;
+  }
+  .calendar-month__header__title {
+    width: 20rem;
+  }
+  .calendar-month__header > * {
+    flex: unset;
+  }
 }/*# sourceMappingURL=main.css.map */

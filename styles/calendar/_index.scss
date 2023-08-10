@@ -6,8 +6,8 @@
   &-day {
     &__number {
       background-color: var(--card-color);
-      font-size: 1rem;
-      height: clamp(7.5rem, 10vw, 10rem);
+      font-size: clamp(1rem, 2vw, 1.6rem);
+      height: clamp(7.5rem, 10vw, 17rem);
       padding: clamp(0.5rem, 2vw, 2.5rem);
     }
   }
@@ -18,23 +18,17 @@
     font-size: clamp(1rem, 2vw, 1.6rem);
     padding: clamp(1rem, 1vw, 1.5rem);
     &--tablet {
+      color: var(--text-color-light);
       display: none;
-    }
-  }
-}
-
-@include tablet {
-  .calendar {
-    &-weekday {
-      display: none;
-      &--tablet {
-        display: block;
-      }
+      padding: clamp(1rem, 1vw, 1.5rem);
+      font-size: clamp(1.2rem, 1vw, 1.6rem);
     }
   }
 }
 
 .calendar-month {
+  max-width: 200rem;
+  margin: 0 auto;
   &__header {
     display: flex;
     margin-bottom: 2rem;
@@ -55,6 +49,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
   }
 
@@ -73,5 +68,28 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     border-left: 0.1rem solid var(--calendar-outline-color);
+  }
+}
+
+@include tablet {
+  .calendar {
+    &-weekday {
+      display: none;
+      &--tablet {
+        display: block;
+      }
+    }
+  }
+
+  .calendar-month {
+    &__header {
+      justify-content: center;
+      &__title {
+        width: 20rem;
+      }
+      > * {
+        flex: unset;
+      }
+    }
   }
 }
