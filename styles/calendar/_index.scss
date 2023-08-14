@@ -1,14 +1,16 @@
 .calendar {
   margin-bottom: 2rem;
+
   &__header {
     margin-bottom: 2rem;
   }
   &-day {
     &__number {
-      background-color: var(--card-color);
+      position: relative;
       font-size: clamp(1rem, 2vw, 1.6rem);
       height: clamp(7.5rem, 10vw, 17rem);
       padding: clamp(0.5rem, 2vw, 2.5rem);
+      background-color: var(--card-color);
     }
   }
   &-weekday {
@@ -29,6 +31,7 @@
 .calendar-month {
   max-width: 200rem;
   margin: 0 auto;
+
   &__header {
     display: flex;
     margin-bottom: 2rem;
@@ -54,6 +57,7 @@
   }
 
   &__weekdays {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     background-image: linear-gradient(
@@ -61,13 +65,21 @@
       var(--primary-color) 0%,
       var(--secondary-color) 50%
     );
+    outline: 0.1rem solid var(--primary-color);
+    z-index: 1;
   }
 
   &__days {
     position: relative;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border-left: 0.1rem solid var(--calendar-outline-color);
+    gap: 0.1rem;
+
+    &__day {
+      position: relative;
+      background-color: var(--card-color);
+      outline: 0.1rem solid black;
+    }
   }
 }
 

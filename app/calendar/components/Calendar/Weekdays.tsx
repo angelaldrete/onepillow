@@ -1,17 +1,11 @@
 import React from "react";
 import Weekday from "./Weekday";
 
-const Weekdays = () => {
-  const weekdays: string[] = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+interface WeekdaysProps {
+  weekdays: string[];
+}
 
+const Weekdays: React.FC<WeekdaysProps> = ({ weekdays }) => {
   return (
     <ul className="calendar-month__weekdays">
       {weekdays.map((weekday, index) => (
