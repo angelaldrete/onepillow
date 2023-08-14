@@ -45,7 +45,7 @@ const CalendarMonth = () => {
 
   return (
     <div className="calendar-month">
-      <section className="calendar-month__body">
+      <div className="calendar-month__body">
         <Header
           handleMonthControls={(action: MonthControlsAction) =>
             handleMonthControls(action)
@@ -55,8 +55,8 @@ const CalendarMonth = () => {
         />
         <Weekdays weekdays={weekdays} />
         <Days weekdays={weekdays} days={daysInMonthArray} />
-      </section>
-      <AddButton onClick={() => console.log("clicked")} />
+      </div>
+      <AddButton to="/calendar/add" />
     </div>
   );
 };
