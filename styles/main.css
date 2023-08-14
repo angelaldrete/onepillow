@@ -153,6 +153,7 @@ p {
   color: var(--primary-color);
   padding: clamp(1rem, 2vw, 1.5rem) clamp(2.5rem, 5vw, 3rem);
   border-radius: 0.5rem;
+  background-color: white;
 }
 
 .card {
