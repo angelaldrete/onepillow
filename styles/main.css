@@ -387,12 +387,12 @@ p {
   position: relative;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.1rem;
+  gap: 1px;
 }
 .calendar-month__days__day {
   position: relative;
   background-color: var(--card-color);
-  outline: 0.1rem solid black;
+  outline: 1px solid black;
 }
 
 @media (min-width: 768px) {
