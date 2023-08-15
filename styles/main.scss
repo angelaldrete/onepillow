@@ -9,8 +9,10 @@
   --quaternary-color: #002500;
   --quinary-color: #1b9aaa;
   --background-color: #f8f9ff;
+  --disabled-color: #eaeaea;
   --card-color: #ffffff;
   --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
+  --box-shadow-focus: 4px 4px 20px rgba(231, 69, 163, 0.35);
   --text-color: #20161e;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -107,3 +109,4 @@ p {
 @import "navbar";
 @import "dashboard/index";
 @import "calendar/index";
+@import "reservations/index";

@@ -6,8 +6,10 @@
   --quaternary-color: #002500;
   --quinary-color: #1b9aaa;
   --background-color: #f8f9ff;
+  --disabled-color: #eaeaea;
   --card-color: #ffffff;
   --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
+  --box-shadow-focus: 4px 4px 20px rgba(231, 69, 163, 0.35);
   --text-color: #20161e;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -145,13 +147,13 @@ p {
 .btn--submit {
   background-image: linear-gradient(to left top, var(--secondary-color) 0%, var(--primary-color) 80%);
   color: white;
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(2.5rem, 5vw, 3rem);
+  padding: 1rem 2rem;
   border-radius: 0.5rem;
 }
 .btn--cancel {
   outline: 0.1rem solid var(--primary-color);
   color: var(--primary-color);
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(2.5rem, 5vw, 3rem);
+  padding: 1rem 2rem;
   border-radius: 0.5rem;
   background-color: white;
 }
@@ -434,5 +436,73 @@ p {
   }
   .calendar-month__header > * {
     flex: unset;
+  }
+}
+.add-reservation__form__group {
+  margin-bottom: 1rem;
+}
+.add-reservation__form__group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+  font-weight: bold;
+  color: var(--text-color);
+}
+.add-reservation__form__group input:not([type=checkbox]),
+.add-reservation__form__group textarea,
+.add-reservation__form__group select {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  font-size: clamp(1.4rem, 2vw, 1.6rem) 90;
+  transition: box-shadow 0.2s ease-in-out;
+  box-shadow: var(--box-shadow);
+}
+.add-reservation__form__group input:not([type=checkbox]):focus,
+.add-reservation__form__group textarea:focus,
+.add-reservation__form__group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: var(--box-shadow-focus);
+}
+.add-reservation__form__group textarea {
+  resize: none;
+  height: 10rem;
+  font-family: inherit;
+  background-color: var(--disabled-color);
+}
+.add-reservation__form__group input[type=checkbox] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+.add-reservation__form__group input[type=date] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.add-reservation__form__group.actions {
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .add-reservation__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    -moz-column-gap: clamp(4rem, 5vw, 6rem);
+         column-gap: clamp(4rem, 5vw, 6rem);
+    row-gap: clamp(1.5rem, 2vw, 2rem);
+  }
+  .add-reservation__form__group {
+    margin-bottom: 0;
+  }
+  .add-reservation__form__group.actions {
+    grid-template-columns: repeat(3, 1fr);
   }
 }/*# sourceMappingURL=main.css.map */

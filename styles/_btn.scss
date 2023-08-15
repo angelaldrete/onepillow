@@ -38,13 +38,13 @@
       var(--primary-color) 80%
     );
     color: white;
-    padding: clamp(1rem, 2vw, 1.5rem) clamp(2.5rem, 5vw, 3rem);
+    padding: 1rem 2rem;
     border-radius: 0.5rem;
   }
   &--cancel {
     outline: 0.1rem solid var(--primary-color);
     color: var(--primary-color);
-    padding: clamp(1rem, 2vw, 1.5rem) clamp(2.5rem, 5vw, 3rem);
+    padding: 1rem 2rem;
     border-radius: 0.5rem;
     background-color: white;
   }

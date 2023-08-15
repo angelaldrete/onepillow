@@ -8,7 +8,47 @@ const AddReservationForm = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
-    console.log(data);
+    // for each input, check if it's valid
+    const inputs = e.currentTarget.querySelectorAll("input");
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        // if it's not valid, show the error message
+        const errorMessage = input.getAttribute("data-pattern-error");
+        if (errorMessage) {
+          // create a div below the input with the error message
+          const errorDiv = document.createElement("div");
+          errorDiv.classList.add("error-message");
+          errorDiv.textContent = errorMessage;
+          input.parentNode?.insertBefore(errorDiv, input.nextSibling);
+
+          // add a class to the input to show it's invalid
+          input.classList.add("invalid");
+
+          // add an event listener to remove the error message when the user starts typing
+          input.addEventListener("input", () => {
+            errorDiv.remove();
+            input.classList.remove("invalid");
+          });
+        }
+
+        // if the input is required and empty, show a different error message
+        if (input.required && input.value === "") {
+          const errorDiv = document.createElement("div");
+          errorDiv.classList.add("error-message");
+          errorDiv.textContent = "This field is required";
+          input.parentNode?.insertBefore(errorDiv, input.nextSibling);
+
+          // add a class to the input to show it's invalid
+          input.classList.add("invalid");
+
+          // add an event listener to remove the error message when the user starts typing
+          input.addEventListener("input", () => {
+            errorDiv.remove();
+            input.classList.remove("invalid");
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -20,22 +60,50 @@ const AddReservationForm = () => {
     >
       <div className="add-reservation__form__group">
         <label htmlFor="name">Name</label>
-        <input type="text" name="name" id="name" />
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          pattern="[A-Za-z]{3,}"
+          data-pattern-error="Name must be at least 3 characters long"
+        />
       </div>
 
       <div className="add-reservation__form__group">
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" id="email" />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="example@example.com"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          data-pattern-error="Please enter a valid email address"
+        />
       </div>
 
       <div className="add-reservation__form__group">
         <label htmlFor="phone">Phone</label>
-        <input type="tel" name="phone" id="phone" />
+        <input
+          type="tel"
+          name="phone"
+          id="phone"
+          placeholder="(X)-000-00-00"
+          pattern="(\+?\d[- .]*){7,13}"
+          data-pattern-error="Please enter a valid phone number"
+        />
       </div>
 
       <div className="add-reservation__form__group">
         <label htmlFor="address">Address</label>
-        <input type="text" name="address" id="address" />
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Av. XXX"
+          pattern="[A-Za-z]{3,}"
+          data-pattern-error="Address must be at least 3 characters long"
+        />
       </div>
 
       <div className="add-reservation__form__group">
@@ -65,6 +133,8 @@ const AddReservationForm = () => {
           id="number-of-guests"
           min="1"
           max="4"
+          pattern="[1-4]"
+          data-pattern-error="Number of guests must be between 1 and 4"
         />
       </div>
 
@@ -100,8 +170,10 @@ const AddReservationForm = () => {
         Accept
       </div>
 
-      <CancelButton>Cancel</CancelButton>
-      <SubmitButton>Submit</SubmitButton>
+      <div className="add-reservation__form__group actions">
+        <CancelButton>Cancel</CancelButton>
+        <SubmitButton>Submit</SubmitButton>
+      </div>
     </form>
   );
 };
