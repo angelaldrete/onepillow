@@ -160,6 +160,31 @@ p {
   background-color: white;
 }
 
+.search-bar {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: var(--input-color);
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+.search-bar:focus-within {
+  outline: 1px solid var(--primary-color);
+}
+.search-bar .input {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: clamp(1rem, 1vw, 1.5rem);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+.search-bar .input:focus-visible {
+  outline: none;
+}
+
 .card {
   position: relative;
   padding: 1.5rem 2rem 2rem;
@@ -440,6 +465,58 @@ p {
     flex: unset;
   }
 }
+.reservations {
+  padding-bottom: 10rem;
+}
+.reservations__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-bottom: 2rem;
+}
+.reservations__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.reservation__title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.reservation__checkInDate, .reservation__checkOutDate {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.reservation__checkInDate strong, .reservation__checkOutDate strong {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .reservations__header {
+    flex-direction: row;
+    align-items: center;
+  }
+  .reservations .search-bar {
+    margin: 0;
+    flex: 1;
+    margin-left: 2rem;
+  }
+  .reservations__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1025px) {
+  .reservations .search-bar {
+    flex: unset;
+    width: 50%;
+    margin: 0 auto;
+  }
+  .reservations__list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 .add-reservation__form__group {
   margin-bottom: 1rem;
 }
@@ -508,35 +585,14 @@ p {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.rooms {
+  padding-bottom: 10rem;
+}
 .rooms__header {
   display: flex;
   flex-direction: column;
   justify-content: start;
   margin-bottom: 2rem;
-}
-.rooms__search-bar {
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  background-color: var(--input-color);
-  padding-left: 1rem;
-  padding-right: 0.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-}
-.rooms__search-bar:focus-within {
-  outline: 1px solid var(--primary-color);
-}
-.rooms__input {
-  flex: 1;
-  border: none;
-  background: none;
-  padding: clamp(1rem, 1vw, 1.5rem);
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-}
-.rooms__input:focus-visible {
-  outline: none;
 }
 .rooms__list {
   display: grid;
@@ -559,7 +615,7 @@ p {
     flex-direction: row;
     align-items: center;
   }
-  .rooms__search-bar {
+  .rooms .search-bar {
     margin: 0;
     flex: 1;
     margin-left: 2rem;
@@ -569,7 +625,7 @@ p {
   }
 }
 @media (min-width: 1025px) {
-  .rooms__search-bar {
+  .rooms .search-bar {
     flex: unset;
     width: 50%;
     margin: 0 auto;

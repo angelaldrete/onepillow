@@ -1,1 +1,67 @@
+.reservations {
+  padding-bottom: 10rem;
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-bottom: 2rem;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.reservation {
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  &__checkInDate,
+  &__checkOutDate {
+    strong {
+      display: block;
+    }
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@include tablet {
+  .reservations {
+    &__header {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .search-bar {
+      margin: 0;
+      flex: 1;
+      margin-left: 2rem;
+    }
+
+    &__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@include desktop {
+  .reservations {
+    .search-bar {
+      flex: unset;
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    &__list {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+
 @import "form";

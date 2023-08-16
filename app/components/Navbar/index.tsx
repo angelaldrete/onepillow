@@ -7,6 +7,7 @@ import {
   MdOutlineLogout,
   MdOutlineCalendarMonth,
   MdBed,
+  MdBook,
 } from "react-icons/md";
 import Logo from "../Logo";
 import NavbarSectionItem from "./NavbarSectionItem";
@@ -24,6 +25,11 @@ const navbarSections: NavbarSection[] = [
         href: "/calendar",
         icon: <MdOutlineCalendarMonth />,
         text: "Calendar",
+      },
+      {
+        href: "/reservations",
+        icon: <MdBook />,
+        text: "Reservations",
       },
       {
         href: "/rooms",
