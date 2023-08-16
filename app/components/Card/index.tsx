@@ -3,11 +3,12 @@ import React from "react";
 interface CardProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
 }
 
-const Card: React.FC<CardProps> = ({ children, style }) => {
+const Card: React.FC<CardProps> = ({ children, style, className }) => {
   return (
-    <div className="card" style={style}>
+    <div className={className ? `${className} card` : "card"} style={style}>
       {children}
     </div>
   );

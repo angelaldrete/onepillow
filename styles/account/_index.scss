@@ -1,0 +1,22 @@
+.account {
+  padding-bottom: 10rem;
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+}
+
+@include desktop {
+  .user__header,
+  .user-details {
+    width: 50%;
+    max-width: 100rem;
+    margin: 0 auto;
+  }
+}
+
+@import "header";
+@import "details";

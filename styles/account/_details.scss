@@ -1,0 +1,9 @@
+.user-details {
+  li {
+    margin-bottom: 1rem;
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    strong {
+      display: block;
+    }
+  }
+}
