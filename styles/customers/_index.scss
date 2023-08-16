@@ -1,4 +1,4 @@
-.reservations {
+.customers {
   padding-bottom: 10rem;
   &__header {
     display: flex;
@@ -14,25 +14,26 @@
   }
 }
 
-.reservation {
+.customer {
   &__title {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;
   }
 
-  &__checkInDate,
-  &__checkOutDate {
+  &__email,
+  &__phone,
+  &__location {
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    margin-bottom: 1rem;
     strong {
       display: block;
     }
-    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
-    margin-bottom: 1rem;
   }
 }
 
 @include tablet {
-  .reservations {
+  .customers {
     &__header {
       flex-direction: row;
       align-items: center;
@@ -51,7 +52,7 @@
 }
 
 @include desktop {
-  .reservations {
+  .customers {
     .search-bar {
       flex: unset;
       width: 50%;
@@ -63,5 +64,3 @@
     }
   }
 }
-
-@import "form";

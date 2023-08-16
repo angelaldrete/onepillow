@@ -8,7 +8,7 @@
     &__number {
       position: relative;
       font-size: clamp(1rem, 2vw, 1.6rem);
-      height: clamp(7.5rem, 10vw, 17rem);
+      height: clamp(7.5rem, 10vw, 15rem);
       padding: clamp(0.5rem, 2vw, 2.5rem);
       background-color: var(--card-color);
     }
@@ -29,7 +29,7 @@
 }
 
 .calendar-month {
-  max-width: 200rem;
+  max-width: 100rem;
   margin: 0 auto;
 
   &__header {
