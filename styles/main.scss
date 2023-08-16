@@ -13,6 +13,8 @@
   --card-color: #ffffff;
   --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
   --box-shadow-focus: 4px 4px 20px rgba(231, 69, 163, 0.35);
+  --input-color: #ffffff;
+  --border-radius: 0.8rem;
   --text-color: #20161e;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -110,3 +112,4 @@ p {
 @import "dashboard/index";
 @import "calendar/index";
 @import "reservations/index";
+@import "rooms/index";
