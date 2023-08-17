@@ -1,0 +1,86 @@
+.form {
+  &__group {
+    margin-bottom: 1rem;
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: clamp(1.4rem, 2vw, 1.6rem);
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    input:not([type="checkbox"]),
+    textarea,
+    select {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      background-color: var(--card-color);
+      color: var(--text-color);
+      font-size: clamp(1.4rem, 2vw, 1.6rem) 90;
+      transition: box-shadow 0.2s ease-in-out;
+      box-shadow: var(--box-shadow);
+      &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: var(--box-shadow-focus);
+      }
+    }
+
+    textarea {
+      resize: none;
+      height: 10rem;
+      font-family: inherit;
+      &:disabled {
+        background-color: var(--disabled-color);
+      }
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    input[type="date"] {
+      appearance: none;
+    }
+  }
+  .actions {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    display: flex;
+    width: 100%;
+    grid-column: 2;
+    > * {
+      &:first-child {
+        margin-right: 1rem;
+      }
+      flex: 1;
+    }
+  }
+}
+
+@include tablet {
+  .form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(4rem, 5vw, 6rem);
+    row-gap: clamp(1.5rem, 2vw, 2rem);
+    &__group {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include desktop {
+  .form {
+    .actions {
+      width: unset;
+      justify-content: flex-end;
+      > * {
+        flex: unset;
+      }
+    }
+  }
+}

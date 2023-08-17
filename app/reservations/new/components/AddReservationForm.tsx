@@ -13,12 +13,12 @@ const AddReservationForm = () => {
 
   return (
     <form
-      className="add-reservation__form"
+      className="form"
       onSubmit={(e) => {
         handleSubmit(e);
       }}
     >
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -30,7 +30,7 @@ const AddReservationForm = () => {
         />
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -42,7 +42,7 @@ const AddReservationForm = () => {
         />
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="phone">Phone</label>
         <input
           type="tel"
@@ -54,7 +54,7 @@ const AddReservationForm = () => {
         />
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="address">Address</label>
         <input
           type="text"
@@ -66,17 +66,17 @@ const AddReservationForm = () => {
         />
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="check-in-date">Check In Date</label>
         <input type="date" name="check-in-date" id="check-in-date" />
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="check-out-date">Check Out Date</label>
         <input type="date" name="check-out-date" id="check-out-date" />
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="room-type">Room Type</label>
         <select name="room-type" id="room-type">
           <option value="single">Single</option>
@@ -85,7 +85,7 @@ const AddReservationForm = () => {
         </select>
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="number-of-guests">Number of Guests</label>
         <input
           type="number"
@@ -98,7 +98,7 @@ const AddReservationForm = () => {
         />
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="bed-preferences">Bed Preferences</label>
         <select name="bed-preferences" id="bed-preferences">
           <option value="one-king">One King</option>
@@ -107,7 +107,7 @@ const AddReservationForm = () => {
         </select>
       </div>
 
-      <div className="add-reservation__form__group">
+      <div className="form__group">
         <label htmlFor="terms-and-conditions">Terms and Conditions</label>
         <textarea cols={30} rows={10} disabled>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
