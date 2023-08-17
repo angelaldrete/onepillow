@@ -603,6 +603,49 @@ p {
   margin-bottom: 2rem;
 }
 
+.reservation-single__header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+.reservation-single__header svg {
+  font-size: 2rem;
+}
+.reservation-single__header svg:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.reservation-single__header > * {
+  margin-right: 1rem;
+}
+.reservation-single__content {
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+}
+.reservation-single__item {
+  margin-bottom: 2rem;
+}
+.reservation-single__label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .reservation-single .card {
+    padding: 2rem;
+  }
+  .reservation-single__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1025px) {
+  .reservation-single .card {
+    padding: 3rem;
+  }
+  .reservation-single__content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 .rooms {
   padding-bottom: 10rem;
 }
