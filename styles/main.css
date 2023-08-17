@@ -655,6 +655,10 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+.add-room__header {
+  margin-bottom: 2rem;
+}
+
 .customers {
   padding-bottom: 10rem;
 }
