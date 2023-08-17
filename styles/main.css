@@ -383,7 +383,7 @@ p {
 .calendar-day__number {
   position: relative;
   font-size: clamp(1rem, 2vw, 1.6rem);
-  height: clamp(7.5rem, 10vw, 15rem);
+  height: clamp(7.5rem, 10vw, 12rem);
   padding: clamp(0.5rem, 2vw, 2.5rem);
   background-color: var(--card-color);
 }
@@ -517,6 +517,9 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+.add-reservation__header {
+  margin-bottom: 2rem;
+}
 .add-reservation__form__group {
   margin-bottom: 1rem;
 }
@@ -562,12 +565,18 @@ p {
      -moz-appearance: none;
           appearance: none;
 }
-.add-reservation__form__group.actions {
-  margin-top: 1rem;
+.add-reservation__form .actions {
+  margin-top: 2rem;
   margin-bottom: 5rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  display: flex;
+  width: 100%;
+  grid-column: 2;
+}
+.add-reservation__form .actions > * {
+  flex: 1;
+}
+.add-reservation__form .actions > *:first-child {
+  margin-right: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -581,8 +590,14 @@ p {
   .add-reservation__form__group {
     margin-bottom: 0;
   }
-  .add-reservation__form__group.actions {
-    grid-template-columns: repeat(3, 1fr);
+}
+@media (min-width: 1025px) {
+  .add-reservation__form .actions {
+    width: unset;
+    justify-content: flex-end;
+  }
+  .add-reservation__form .actions > * {
+    flex: unset;
   }
 }
 .rooms {

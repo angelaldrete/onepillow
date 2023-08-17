@@ -7,48 +7,8 @@ const AddReservationForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
-    // for each input, check if it's valid
-    const inputs = e.currentTarget.querySelectorAll("input");
-    inputs.forEach((input) => {
-      if (!input.checkValidity()) {
-        // if it's not valid, show the error message
-        const errorMessage = input.getAttribute("data-pattern-error");
-        if (errorMessage) {
-          // create a div below the input with the error message
-          const errorDiv = document.createElement("div");
-          errorDiv.classList.add("error-message");
-          errorDiv.textContent = errorMessage;
-          input.parentNode?.insertBefore(errorDiv, input.nextSibling);
-
-          // add a class to the input to show it's invalid
-          input.classList.add("invalid");
-
-          // add an event listener to remove the error message when the user starts typing
-          input.addEventListener("input", () => {
-            errorDiv.remove();
-            input.classList.remove("invalid");
-          });
-        }
-
-        // if the input is required and empty, show a different error message
-        if (input.required && input.value === "") {
-          const errorDiv = document.createElement("div");
-          errorDiv.classList.add("error-message");
-          errorDiv.textContent = "This field is required";
-          input.parentNode?.insertBefore(errorDiv, input.nextSibling);
-
-          // add a class to the input to show it's invalid
-          input.classList.add("invalid");
-
-          // add an event listener to remove the error message when the user starts typing
-          input.addEventListener("input", () => {
-            errorDiv.remove();
-            input.classList.remove("invalid");
-          });
-        }
-      }
-    });
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
   };
 
   return (
@@ -169,8 +129,7 @@ const AddReservationForm = () => {
         />
         Accept
       </div>
-
-      <div className="add-reservation__form__group actions">
+      <div className="actions">
         <CancelButton>Cancel</CancelButton>
         <SubmitButton>Submit</SubmitButton>
       </div>

@@ -1,4 +1,7 @@
 .add-reservation {
+  &__header {
+    margin-bottom: 2rem;
+  }
   &__form {
     &__group {
       margin-bottom: 1rem;
@@ -44,13 +47,18 @@
       input[type="date"] {
         appearance: none;
       }
-
-      &.actions {
-        margin-top: 1rem;
-        margin-bottom: 5rem;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    }
+    .actions {
+      margin-top: 2rem;
+      margin-bottom: 5rem;
+      display: flex;
+      width: 100%;
+      grid-column: 2;
+      > * {
+        &:first-child {
+          margin-right: 1rem;
+        }
+        flex: 1;
       }
     }
   }
@@ -65,8 +73,19 @@
       row-gap: clamp(1.5rem, 2vw, 2rem);
       &__group {
         margin-bottom: 0;
-        &.actions {
-          grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@include desktop {
+  .add-reservation {
+    &__form {
+      .actions {
+        width: unset;
+        justify-content: flex-end;
+        > * {
+          flex: unset;
         }
       }
     }

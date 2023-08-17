@@ -56,7 +56,7 @@ const CalendarMonth = () => {
         <Weekdays weekdays={weekdays} />
         <Days weekdays={weekdays} days={daysInMonthArray} />
       </div>
-      <AddButton to="/calendar/add" />
+      <AddButton to="/reservations/new" />
     </div>
   );
 };
