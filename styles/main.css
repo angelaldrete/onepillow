@@ -730,4 +730,21 @@ p {
 }
 .user-details li strong {
   display: block;
+}
+
+.settings {
+  padding-bottom: 10rem;
+}
+.settings__header {
+  margin-bottom: 2rem;
+}
+.settings__list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .settings__list {
+    gap: 2rem;
+  }
 }/*# sourceMappingURL=main.css.map */

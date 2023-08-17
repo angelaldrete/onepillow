@@ -1,0 +1,19 @@
+.settings {
+  padding-bottom: 10rem;
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__list {
+    display: grid;
+    gap: 1.5rem;
+  }
+}
+
+@include tablet {
+  .settings {
+    &__list {
+      gap: 2rem;
+    }
+  }
+}
