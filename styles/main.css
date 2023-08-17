@@ -616,7 +616,10 @@ p {
   cursor: pointer;
 }
 .reservation-single__header > * {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+}
+.reservation-single__title {
+  font-size: 2.5rem;
 }
 .reservation-single__content {
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
