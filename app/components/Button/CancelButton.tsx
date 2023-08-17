@@ -1,16 +1,20 @@
-import React, { EventHandler } from "react";
+"use client";
+import React from "react";
 import Button from ".";
+import { useRouter } from "next/navigation";
 
 interface CancelButtonProps {
   children: React.ReactNode;
 }
 
 const CancelButton: React.FC<CancelButtonProps> = ({ children }) => {
+  const router = useRouter();
+
   const navigateBack = (
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
   ): void => {
     e.preventDefault();
-    window.history.back();
+    router.back();
   };
 
   return (
