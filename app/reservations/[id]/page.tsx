@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import Reservation from "../types/Reservation";
 import Card from "@/app/components/Card";
 import { MdDelete, MdEdit } from "react-icons/md";
-
+import { useRouter } from "next/navigation";
 interface SingleReservationProps {
   params: {
     id: string;
@@ -25,11 +26,21 @@ const SingleReservation: React.FC<SingleReservationProps> = ({
     roomType: "single",
   };
 
+  const router = useRouter();
+
+  const navigateTo = (path: string) => {
+    router.push(path);
+  };
+
   return (
     <div className="reservation-single">
       <div className="reservation-single__header">
         <h1 className="reservation-single__title">Reservation</h1>
-        <MdEdit />
+        <MdEdit
+          onClick={() => {
+            navigateTo(`/reservations/edit/${id}`);
+          }}
+        />
         <MdDelete />
       </div>
 

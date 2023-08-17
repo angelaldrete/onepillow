@@ -1,4 +1,4 @@
-import React from "react";
+import React, { EventHandler } from "react";
 import Button from ".";
 
 interface CancelButtonProps {
@@ -6,7 +6,10 @@ interface CancelButtonProps {
 }
 
 const CancelButton: React.FC<CancelButtonProps> = ({ children }) => {
-  const navigateBack = () => {
+  const navigateBack = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+  ): void => {
+    e.preventDefault();
     window.history.back();
   };
 

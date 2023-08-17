@@ -1,7 +1,9 @@
-import React from "react";
+import React, { FormEvent } from "react";
 
 interface ButtonProps {
-  onClick?: () => void;
+  onClick?: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+  ) => void;
   children?: React.ReactNode;
   className?: string;
 }

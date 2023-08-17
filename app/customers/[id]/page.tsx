@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Customer from "../types/Customer";
 import Card from "@/app/components/Card";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 interface SingleCustomerProps {
   params: {
@@ -24,11 +26,21 @@ const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   };
 
+  const router = useRouter();
+
+  const navigateTo = (path: string) => {
+    router.push(path);
+  };
+
   return (
     <div className="customer-single">
       <div className="customer-single__header">
         <h1 className="customer-single__title">Customer</h1>
-        <MdEdit />
+        <MdEdit
+          onClick={() => {
+            navigateTo(`/customers/edit/${id}`);
+          }}
+        />
         <MdDelete />
       </div>
 

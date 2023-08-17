@@ -741,7 +741,7 @@ p {
   .room-single__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 2rem;
   }
 }
 @media (min-width: 1025px) {

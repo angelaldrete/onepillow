@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import Room from "../types/Room";
 import Card from "@/app/components/Card";
 import { MdDelete, MdEdit } from "react-icons/md";
-
+import { useRouter } from "next/navigation";
 interface SingleRoomProps {
   params: {
     id: string;
@@ -21,11 +22,21 @@ const SingleRoom: React.FC<SingleRoomProps> = ({ params: { id } }) => {
     image: "https://source.unsplash.com/random/400x400",
   };
 
+  const router = useRouter();
+
+  const navigateTo = (path: string) => {
+    router.push(path);
+  };
+
   return (
     <div className="room-single">
       <div className="room-single__header">
         <h1 className="room-single__title">Room</h1>
-        <MdEdit />
+        <MdEdit
+          onClick={() => {
+            navigateTo(`/rooms/edit/${id}`);
+          }}
+        />
         <MdDelete />
       </div>
 

@@ -3,7 +3,7 @@ import CancelButton from "@/app/components/Button/CancelButton";
 import SubmitButton from "@/app/components/Button/SubmitButton";
 import React from "react";
 
-const AddCustomerForm = () => {
+const EditCustomerForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -127,4 +127,4 @@ const AddCustomerForm = () => {
   );
 };
 
-export default AddCustomerForm;
+export default EditCustomerForm;
