@@ -1,0 +1,59 @@
+.customer-single {
+  &__header {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    svg {
+      font-size: 2rem;
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+    > * {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+  }
+
+  &__content {
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  }
+
+  &__item {
+    margin-bottom: 2rem;
+  }
+
+  &__label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@include tablet {
+  .customer-single {
+    .card {
+      padding: 2rem;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@include desktop {
+  .customer-single {
+    .card {
+      padding: 3rem;
+    }
+
+    &__content {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
