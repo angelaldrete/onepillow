@@ -5,9 +5,10 @@ import { useRouter } from "next/navigation";
 
 interface CancelButtonProps {
   children: React.ReactNode;
+  ref?: React.RefObject<HTMLButtonElement>;
 }
 
-const CancelButton: React.FC<CancelButtonProps> = ({ children }) => {
+const CancelButton: React.FC<CancelButtonProps> = ({ children, ref }) => {
   const router = useRouter();
 
   const navigateBack = (
@@ -18,7 +19,7 @@ const CancelButton: React.FC<CancelButtonProps> = ({ children }) => {
   };
 
   return (
-    <Button className="btn--cancel" onClick={navigateBack}>
+    <Button className="btn--cancel" onClick={navigateBack} ref={ref}>
       {children}
     </Button>
   );

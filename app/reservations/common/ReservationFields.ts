@@ -1,0 +1,86 @@
+import Field from "@/app/types/Field";
+
+export const ReservationFields: Field[] = [
+  {
+    name: "name",
+    type: "text",
+    label: "Name",
+    placeholder: "Name",
+    pattern: "[A-Za-z]{3,}",
+    patternError: "Name must be at least 3 characters long",
+  },
+  {
+    name: "email",
+    type: "email",
+    label: "Email",
+    placeholder: "example@example.com",
+    pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
+    patternError: "Please enter a valid email address",
+  },
+  {
+    name: "phone",
+    type: "tel",
+    label: "Phone",
+    placeholder: "(X)-000-00-00",
+    pattern: "(\\+?\\d[- .]*){7,13}",
+    patternError: "Please enter a valid phone number",
+  },
+  {
+    name: "address",
+    type: "text",
+    label: "Address",
+    placeholder: "Av. XXX",
+    pattern: "[A-Za-z]{3,}",
+    patternError: "Address must be at least 3 characters long",
+  },
+  {
+    name: "check-in-date",
+    type: "date",
+    label: "Check In Date",
+    placeholder: "Check In Date",
+  },
+  {
+    name: "check-out-date",
+    type: "date",
+    label: "Check Out Date",
+    placeholder: "Check Out Date",
+  },
+  {
+    name: "room-type",
+    type: "select",
+    label: "Room Type",
+    placeholder: "Room Type",
+    options: [
+      { value: "single", label: "Single" },
+      { value: "double", label: "Double" },
+      { value: "family", label: "Family" },
+    ],
+  },
+  {
+    name: "number-of-guests",
+    type: "number",
+    label: "Number of Guests",
+    placeholder: "Number of Guests",
+    pattern: "[1-4]",
+    patternError: "Number of guests must be between 1 and 4",
+  },
+  {
+    name: "bed-preferences",
+    type: "select",
+    label: "Bed Preferences",
+    placeholder: "Bed Preferences",
+    options: [
+      { value: "one-king", label: "One King" },
+      { value: "two-queens", label: "Two Queens" },
+      { value: "one-king-and-one-queen", label: "One King and One Queen" },
+    ],
+  },
+  {
+    name: "terms-and-conditions",
+    type: "checkbox",
+    label: "Terms and Conditions",
+    placeholder: "Terms and Conditions",
+    disabled: true,
+    value: "Accept",
+  },
+];

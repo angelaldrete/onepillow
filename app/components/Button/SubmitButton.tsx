@@ -3,12 +3,21 @@ import Button from ".";
 
 interface SubmitButtonProps {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: (
+    e:
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+      | React.FormEvent<HTMLFormElement>
+  ) => void;
+  ref?: React.RefObject<HTMLButtonElement>;
 }
 
-const SubmitButton: React.FC<SubmitButtonProps> = ({ children, onClick }) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({
+  children,
+  onClick,
+  ref,
+}) => {
   return (
-    <Button className="btn--submit" onClick={onClick}>
+    <Button className="btn--submit" onClick={onClick} ref={ref}>
       {children}
     </Button>
   );
