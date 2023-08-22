@@ -7,11 +7,12 @@
   --quinary-color: #1b9aaa;
   --background-color: #f8f9ff;
   --disabled-color: #eaeaea;
+  --error-color: #c42020;
   --card-color: #ffffff;
   --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
   --box-shadow-focus: 4px 4px 20px rgba(231, 69, 163, 0.35);
   --input-color: #ffffff;
-  --border-radius: 0.8rem;
+  --border-radius: 1.2rem;
   --text-color: #20161e;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -26,14 +27,20 @@
   --tertiary-color: #dfb145;
   --quaternary-color: #002500;
   --quinary-color: #1b9aaa;
-  --background-color: #20161e;
-  --card-color: #28232a;
+  --background-color: #28232a; /* Updated background color for dark mode */
+  --disabled-color: #363636;
+  --error-color: #c42020;
+  --card-color: #1e1b22; /* Darker card color for dark mode */
   --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
-  --text-color: #f2f2f2;
+  --box-shadow-focus: 4px 4px 20px rgba(231, 69, 163, 0.35);
+  --input-color: #1e1b22; /* Darker input color for dark mode */
+  --border-radius: 1.2rem;
+  --text-color: #f2f2f2; /* Lighter text color for contrast */
   --text-color-light: #f2f2f2;
-  --text-color-dark: #28232a;
-  --text-color-secondary: #79737c;
-  --text-color-tertiary: #666666;
+  --text-color-dark: #f7f7f7; /* Lighter text color for contrast */
+  --text-color-secondary: #a8a8a8; /* Lighter secondary text color for contrast */
+  --text-color-tertiary: #b3b3b3; /* Lighter tertiary text color for contrast */
+  --calendar-outline-color: #df4496; /* Retained calendar outline color */
 }
 
 * {
@@ -117,6 +124,24 @@ p {
     opacity: 1;
   }
 }
+@keyframes slideModal {
+  0% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .btn {
   background: none;
   border: none;
@@ -175,6 +200,7 @@ p {
   outline: 1px solid var(--primary-color);
 }
 .search-bar .input {
+  font-family: "Poppins", sans-serif;
   flex: 1;
   border: none;
   background: none;
@@ -199,6 +225,11 @@ p {
   transform: translateX(200%);
 }
 
+.form__error {
+  color: var(--error-color);
+  margin-top: 0.25rem;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+}
 .form__group {
   margin-bottom: 1rem;
 }
@@ -212,13 +243,14 @@ p {
 .form__group input:not([type=checkbox]),
 .form__group textarea,
 .form__group select {
+  font-family: "Poppins", sans-serif;
   width: 100%;
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background-color: var(--card-color);
   color: var(--text-color);
-  font-size: clamp(1.4rem, 2vw, 1.6rem) 90;
+  font-size: 1.4rem;
   transition: box-shadow 0.2s ease-in-out;
   box-shadow: var(--box-shadow);
 }
@@ -281,6 +313,80 @@ p {
     flex: unset;
   }
 }
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Exit animation */
+}
+.modal--visible {
+  opacity: 1;
+}
+.modal__content {
+  position: relative;
+  background-color: var(--background-color);
+  padding: 2rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  opacity: 0;
+  transform: translateY(-200%);
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Entrance and exit animations */
+  z-index: 1001;
+}
+.modal__content--visible {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.modal__title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--font-color);
+}
+.modal__message {
+  font-size: 1.6rem;
+  color: var(--font-color);
+  margin-bottom: 3rem;
+}
+.modal__close {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--font-color);
+  transition: color 0.3s ease-in-out;
+}
+.modal__close:hover {
+  color: var(--primary-color);
+}
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+.modal__actions > * {
+  margin-left: 2rem;
+}
+
 .logo {
   font-size: 1.2rem;
   text-align: center;

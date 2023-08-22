@@ -10,11 +10,12 @@
   --quinary-color: #1b9aaa;
   --background-color: #f8f9ff;
   --disabled-color: #eaeaea;
+  --error-color: #c42020;
   --card-color: #ffffff;
   --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
   --box-shadow-focus: 4px 4px 20px rgba(231, 69, 163, 0.35);
   --input-color: #ffffff;
-  --border-radius: 0.8rem;
+  --border-radius: 1.2rem;
   --text-color: #20161e;
   --text-color-light: #f2f2f2;
   --text-color-dark: #28232a;
@@ -29,14 +30,20 @@
   --tertiary-color: #dfb145;
   --quaternary-color: #002500;
   --quinary-color: #1b9aaa;
-  --background-color: #20161e;
-  --card-color: #28232a;
+  --background-color: #28232a; /* Updated background color for dark mode */
+  --disabled-color: #363636;
+  --error-color: #c42020;
+  --card-color: #1e1b22; /* Darker card color for dark mode */
   --box-shadow: 4px 4px 20px rgba(231, 69, 163, 0.15);
-  --text-color: #f2f2f2;
+  --box-shadow-focus: 4px 4px 20px rgba(231, 69, 163, 0.35);
+  --input-color: #1e1b22; /* Darker input color for dark mode */
+  --border-radius: 1.2rem;
+  --text-color: #f2f2f2; /* Lighter text color for contrast */
   --text-color-light: #f2f2f2;
-  --text-color-dark: #28232a;
-  --text-color-secondary: #79737c;
-  --text-color-tertiary: #666666;
+  --text-color-dark: #f7f7f7; /* Lighter text color for contrast */
+  --text-color-secondary: #a8a8a8; /* Lighter secondary text color for contrast */
+  --text-color-tertiary: #b3b3b3; /* Lighter tertiary text color for contrast */
+  --calendar-outline-color: #df4496; /* Retained calendar outline color */
 }
 
 * {
@@ -109,6 +116,7 @@ p {
 @import "search-bar";
 @import "card";
 @import "form";
+@import "modal";
 @import "logo";
 @import "navbar";
 @import "dashboard/index";

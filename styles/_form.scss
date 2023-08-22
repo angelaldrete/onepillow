@@ -1,4 +1,10 @@
 .form {
+  &__error {
+    color: var(--error-color);
+    margin-top: 0.25rem;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+  }
+
   &__group {
     margin-bottom: 1rem;
     label {
@@ -12,13 +18,14 @@
     input:not([type="checkbox"]),
     textarea,
     select {
+      font-family: "Poppins", sans-serif;
       width: 100%;
       padding: 1rem;
       border: 1px solid var(--border-color);
       border-radius: 0.5rem;
       background-color: var(--card-color);
       color: var(--text-color);
-      font-size: clamp(1.4rem, 2vw, 1.6rem) 90;
+      font-size: 1.4rem;
       transition: box-shadow 0.2s ease-in-out;
       box-shadow: var(--box-shadow);
       &:focus {

@@ -1,16 +1,19 @@
-import Field from "@/app/types/Field";
+import FieldType from "@/app/common/FieldType";
+import Field from "@/app/common/types/Field";
 
 export const CustomerFields: Field[] = [
   {
     name: "name",
     label: "Name",
     placeholder: "Name",
+    type: FieldType.Text,
     pattern: "[A-Za-z]{3,}",
     patternError: "Name must be at least 3 characters long",
   },
   {
     name: "email",
     label: "Email",
+    type: FieldType.Email,
     placeholder: "example@example.com",
     pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
     patternError: "Please enter a valid email address",
@@ -18,6 +21,7 @@ export const CustomerFields: Field[] = [
   {
     name: "phone",
     label: "Phone",
+    type: FieldType.Tel,
     placeholder: "(X)-000-00-00",
     pattern: "(\\+?\\d[- .]*){7,13}",
     patternError: "Please enter a valid phone number",
@@ -25,6 +29,7 @@ export const CustomerFields: Field[] = [
   {
     name: "address",
     label: "Address",
+    type: FieldType.Text,
     placeholder: "Av. XXX",
     pattern: "[A-Za-z]{3,}",
     patternError: "Address must be at least 3 characters long",
@@ -32,6 +37,7 @@ export const CustomerFields: Field[] = [
   {
     name: "city",
     label: "City",
+    type: FieldType.Text,
     placeholder: "City",
     pattern: "[A-Za-z]{3,}",
     patternError: "City must be at least 3 characters long",
@@ -39,6 +45,7 @@ export const CustomerFields: Field[] = [
   {
     name: "state",
     label: "State",
+    type: FieldType.Text,
     placeholder: "State",
     pattern: "[A-Za-z]{3,}",
     patternError: "State must be at least 3 characters long",
@@ -46,6 +53,7 @@ export const CustomerFields: Field[] = [
   {
     name: "zip-code",
     label: "Zip Code",
+    type: FieldType.Number,
     placeholder: "Zip Code",
     pattern: "[0-9]{5}",
     patternError: "Zip Code must be 5 digits long",
@@ -53,6 +61,7 @@ export const CustomerFields: Field[] = [
   {
     name: "country",
     label: "Country",
+    type: FieldType.Text,
     placeholder: "Country",
     pattern: "[A-Za-z]{3,}",
     patternError: "Country must be at least 3 characters long",
@@ -60,6 +69,7 @@ export const CustomerFields: Field[] = [
   {
     name: "notes",
     label: "Notes",
+    type: FieldType.TextArea,
     placeholder: "Notes",
   },
 ];

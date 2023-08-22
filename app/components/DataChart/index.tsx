@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { clamp, format, parseISO, subDays } from "date-fns";
 import { useState, useEffect } from "react";
-import ChartData from "@/app/types/ChartData";
+import ChartData from "@/app/common/types/ChartData";
 
 const data: ChartData[] = [];
 

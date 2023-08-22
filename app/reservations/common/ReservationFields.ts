@@ -1,9 +1,10 @@
-import Field from "@/app/types/Field";
+import FieldType from "@/app/common/FieldType";
+import Field from "@/app/common/types/Field";
 
 export const ReservationFields: Field[] = [
   {
     name: "name",
-    type: "text",
+    type: FieldType.Text,
     label: "Name",
     placeholder: "Name",
     pattern: "[A-Za-z]{3,}",
@@ -11,7 +12,7 @@ export const ReservationFields: Field[] = [
   },
   {
     name: "email",
-    type: "email",
+    type: FieldType.Email,
     label: "Email",
     placeholder: "example@example.com",
     pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
@@ -19,7 +20,7 @@ export const ReservationFields: Field[] = [
   },
   {
     name: "phone",
-    type: "tel",
+    type: FieldType.Tel,
     label: "Phone",
     placeholder: "(X)-000-00-00",
     pattern: "(\\+?\\d[- .]*){7,13}",
@@ -27,7 +28,7 @@ export const ReservationFields: Field[] = [
   },
   {
     name: "address",
-    type: "text",
+    type: FieldType.Text,
     label: "Address",
     placeholder: "Av. XXX",
     pattern: "[A-Za-z]{3,}",
@@ -35,19 +36,19 @@ export const ReservationFields: Field[] = [
   },
   {
     name: "check-in-date",
-    type: "date",
+    type: FieldType.Date,
     label: "Check In Date",
     placeholder: "Check In Date",
   },
   {
     name: "check-out-date",
-    type: "date",
+    type: FieldType.Date,
     label: "Check Out Date",
     placeholder: "Check Out Date",
   },
   {
     name: "room-type",
-    type: "select",
+    type: FieldType.Select,
     label: "Room Type",
     placeholder: "Room Type",
     options: [
@@ -58,7 +59,7 @@ export const ReservationFields: Field[] = [
   },
   {
     name: "number-of-guests",
-    type: "number",
+    type: FieldType.Number,
     label: "Number of Guests",
     placeholder: "Number of Guests",
     pattern: "[1-4]",
@@ -66,7 +67,7 @@ export const ReservationFields: Field[] = [
   },
   {
     name: "bed-preferences",
-    type: "select",
+    type: FieldType.Select,
     label: "Bed Preferences",
     placeholder: "Bed Preferences",
     options: [
@@ -77,10 +78,18 @@ export const ReservationFields: Field[] = [
   },
   {
     name: "terms-and-conditions",
-    type: "checkbox",
+    type: FieldType.TextArea,
     label: "Terms and Conditions",
     placeholder: "Terms and Conditions",
     disabled: true,
-    value: "Accept",
+    value: "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
   },
+  {
+    name: 'accept-terms-and-conditions',
+    type: FieldType.Checkbox,
+    label: 'Accept Terms and Conditions',
+    placeholder: 'Accept Terms and Conditions',
+    pattern: 'true',
+    patternError: 'Please accept terms and conditions'
+  }
 ];
