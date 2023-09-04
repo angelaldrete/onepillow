@@ -81,7 +81,9 @@ const AppForm: React.FC<AppFormProps> = ({
               <label htmlFor={field.name}>{field.label}</label>
               <select name={field.name} id={field.name}>
                 {field.options?.map((option) => (
-                  <option value={option.value}>{option.label}</option>
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
                 ))}
               </select>
               {errors[field.name] && (

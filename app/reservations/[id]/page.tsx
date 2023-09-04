@@ -51,7 +51,10 @@ const SingleReservation: React.FC<SingleReservationProps> = ({
             return (
               <div className="reservation-single__item" key={key}>
                 <div className="reservation-single__label">
-                  {key[0].toUpperCase() + key.slice(1)}
+                  {key
+                    .split(/(?=[A-Z])/)
+                    .map((word) => word[0].toUpperCase() + word.slice(1))
+                    .join(" ")}{" "}
                 </div>
                 <div className="reservation-single__value">{value}</div>
               </div>

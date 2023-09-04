@@ -51,7 +51,10 @@ const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
             return (
               <div className="customer-single__item" key={key}>
                 <div className="customer-single__label">
-                  {key[0].toUpperCase() + key.slice(1)}
+                  {key
+                    .split(/(?=[A-Z])/)
+                    .map((word) => word[0].toUpperCase() + word.slice(1))
+                    .join(" ")}
                 </div>
                 <div className="customer-single__value">{value}</div>
               </div>

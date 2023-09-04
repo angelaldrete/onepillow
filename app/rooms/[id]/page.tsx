@@ -46,9 +46,12 @@ const SingleRoom: React.FC<SingleRoomProps> = ({ params: { id } }) => {
             if (key === "id") return null;
             if (key === "image")
               return (
-                <>
+                <div className="room-single__item" key={key}>
                   <div className="room-single__label">
-                    {key[0].toUpperCase() + key.slice(1)}
+                    {key
+                      .split(/(?=[A-Z])/)
+                      .map((word) => word[0].toUpperCase() + word.slice(1))
+                      .join(" ")}
                   </div>
                   <div className="room-single__value">
                     {/* <img
@@ -58,12 +61,15 @@ const SingleRoom: React.FC<SingleRoomProps> = ({ params: { id } }) => {
                       src={value}
                     /> */}
                   </div>
-                </>
+                </div>
               );
             return (
               <div className="room-single__item" key={key}>
                 <div className="room-single__label">
-                  {key[0].toUpperCase() + key.slice(1)}
+                  {key
+                    .split(/(?=[A-Z])/)
+                    .map((word) => word[0].toUpperCase() + word.slice(1))
+                    .join(" ")}{" "}
                 </div>
                 <div className="room-single__value">{value}</div>
               </div>
