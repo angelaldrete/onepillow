@@ -34,14 +34,16 @@ const CalendarMonth = () => {
     "Saturday",
   ];
 
-  const daysInMonthArray: { day: number; fullDate: Date }[] = Array.from(
-    { length: daysInMonth },
-    (_, index) => {
-      const day = index + 1;
-      const fullDate = new Date(year, month - 1, day); // month is 0-indexed
-      return { day, fullDate };
-    }
-  );
+  const daysInMonthArray: {
+    day: number;
+    fullDate: Date;
+    reservationsLength: number;
+  }[] = Array.from({ length: daysInMonth }, (_, index) => {
+    const day = index + 1;
+    const fullDate = new Date(year, month - 1, day);
+    const reservationsLength = Math.floor(Math.random() * 10) + 1;
+    return { day, fullDate, reservationsLength };
+  });
 
   return (
     <div className="calendar-month">

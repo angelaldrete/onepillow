@@ -77,8 +77,23 @@
 
     &__day {
       position: relative;
-      background-color: var(--card-color);
       outline: 1px solid black;
+
+      &--today {
+        border: 2px solid var(--primary-color);
+      }
+
+      &--low {
+        background-color: var(--secondary-color);
+      }
+
+      &--medium {
+        background-color: var(--primary-color);
+      }
+
+      &--full {
+        background-color: var(--tertiary-color);
+      }
     }
   }
 }

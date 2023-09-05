@@ -632,8 +632,19 @@ p {
 }
 .calendar-month__days__day {
   position: relative;
-  background-color: var(--card-color);
   outline: 1px solid black;
+}
+.calendar-month__days__day--today {
+  border: 2px solid var(--primary-color);
+}
+.calendar-month__days__day--low {
+  background-color: var(--secondary-color);
+}
+.calendar-month__days__day--medium {
+  background-color: var(--primary-color);
+}
+.calendar-month__days__day--full {
+  background-color: var(--tertiary-color);
 }
 
 @media (min-width: 768px) {
