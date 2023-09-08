@@ -57,6 +57,17 @@ const CalendarMonth = () => {
         />
         <Weekdays weekdays={weekdays} />
         <Days weekdays={weekdays} days={daysInMonthArray} />
+        <ul className="calendar-month__legends">
+          <li className="calendar-month__legends__legend">
+            <span className="calendar-month__legends__legend--low">1-4</span>
+          </li>
+          <li className="calendar-month__legends__legend">
+            <span className="calendar-month__legends__legend--medium">5-9</span>
+          </li>
+          <li className="calendar-month__legends__legend">
+            <span className="calendar-month__legends__legend--full">Full</span>
+          </li>
+        </ul>
       </div>
       <AddButton to="/reservations/new" />
     </div>
