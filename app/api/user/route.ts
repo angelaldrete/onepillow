@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import { ca } from "date-fns/locale";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
-const bcrypt = require("bcrypt");
+
 
 export async function POST(request: Request) {
   try {

@@ -1,35 +1,23 @@
-"use client";
 import React from "react";
 import Navbar from "./components/Navbar";
 import "../styles/main.css";
-import useAuth from "./hooks/useAuth";
-import Login from "./login/page";
+import { AuthProvider } from "./providers/AuthProvider";
+import { Metadata } from "next";
+import BaseContainer from "./components/Base/BaseContainer";
 
-export default function RootLayout({
+export const metadata: Metadata = {
+  title: "Next.js + TypeScript + Tailwind CSS",
+  description: "Next.js + TypeScript + Tailwind CSS",
+};
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const isAuthenticated = useAuth();
-
   return (
     <html lang="en">
-      <body>
-        {isAuthenticated ? (
-          <>
-            <Navbar />
-            <main>{children}</main>
-          </>
-        ) : (
-          <main
-            style={{
-              margin: "2rem",
-            }}
-          >
-            <Login />
-          </main>
-        )}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
