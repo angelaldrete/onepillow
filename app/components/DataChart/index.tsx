@@ -9,7 +9,7 @@ import {
   Area,
   Tooltip,
 } from "recharts";
-import { clamp, format, parseISO, subDays } from "date-fns";
+import { format, parseISO, subDays } from "date-fns";
 import { useState, useEffect } from "react";
 import ChartData from "@/app/common/types/ChartData";
 

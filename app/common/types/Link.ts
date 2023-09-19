@@ -1,5 +1,5 @@
 interface Link {
-  href: string;
+  href?: string;
   icon: JSX.Element;
   text: string;
 }

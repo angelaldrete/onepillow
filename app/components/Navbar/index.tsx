@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   MdOutlineDashboardCustomize,
@@ -17,27 +18,27 @@ const navbarSections: NavbarSection[] = [
     title: "Main Menu",
     links: [
       {
-        href: "/",
+        href: "/admin",
         icon: <MdOutlineDashboardCustomize />,
         text: "Dashboard",
       },
       {
-        href: "/calendar",
+        href: "/admin/calendar",
         icon: <MdOutlineCalendarMonth />,
         text: "Calendar",
       },
       {
-        href: "/reservations",
+        href: "/admin/reservations",
         icon: <MdBook />,
         text: "Reservations",
       },
       {
-        href: "/rooms",
+        href: "/admin/rooms",
         icon: <MdBed />,
         text: "Rooms",
       },
       {
-        href: "/customers",
+        href: "/admin/customers",
         icon: <MdPeople />,
         text: "Customers",
       },
@@ -47,17 +48,16 @@ const navbarSections: NavbarSection[] = [
     title: "Account & Preferences",
     links: [
       {
-        href: "/account",
+        href: "/admin/account",
         icon: <MdOutlineAccountCircle />,
         text: "Profile",
       },
       {
-        href: "/settings",
+        href: "/admin/settings",
         icon: <MdOutlineSettings />,
         text: "Settings",
       },
       {
-        href: "/",
         icon: <MdOutlineLogout />,
         text: "Logout",
       },

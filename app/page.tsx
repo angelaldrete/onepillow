@@ -1,30 +1,28 @@
-import Card from "./components/Card";
-import OverallMetrics from "./dashboard/components/OverallMetrics";
-import DataChart from "./components/DataChart";
-import Recent from "./dashboard/components/Recent";
+import React from "react";
+import LoginForm from "./components/LoginForm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
-export default function Dashboard() {
+export default async function Login() {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect("/admin");
+  }
+
   return (
-    <div className="dashboard">
-      <header className="dashboard__header">
-        <h1 className="dashboard__title">Welcome</h1>
-      </header>
-      <section className="overall-metrics">
-        <OverallMetrics />
-      </section>
-      <section className="monthlyreservations">
-        <h2 className="title">Stats</h2>
-        <Card>
-          <p>Reservations per month</p>
-          <DataChart />
-        </Card>
-      </section>
-      <section className="recent">
-        <h2 className="title">Recent</h2>
-        <Card>
-          <Recent />
-        </Card>
-      </section>
-    </div>
+    <main
+      style={{
+        margin: "2rem",
+        width: "100%",
+        height: "unset",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <LoginForm />
+    </main>
   );
 }
