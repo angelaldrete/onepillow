@@ -2,7 +2,6 @@
 import React from "react";
 import Logo from "../components/Logo";
 import SubmitButton from "../components/Button/SubmitButton";
-import Button from "../components/Button";
 
 const Login = () => {
   const formRef = React.useRef<HTMLFormElement>(null);
@@ -36,32 +35,48 @@ const Login = () => {
     });
 
     if (Object.keys(newErrors).length > 0) {
+      setTimeout(() => {
+        setErrors({});
+      }, 3000);
       setErrors(newErrors);
       return;
     }
+
+    fetch("/api/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (res.status === 200) {
+          localStorage.setItem("token", data.token);
+          window.location.href = "/";
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div className="login">
       <Logo />
-      <form
-        className="login__form"
-        action="/api/login"
-        method="POST"
-        ref={formRef}
-      >
+      <form className="login__form" ref={formRef}>
         <div className="form__group">
           <input
             className="login__input"
             type="text"
-            name="username"
-            placeholder="Username"
+            name="email"
+            placeholder="Email"
             pattern="[a-zA-Z0-9]{3,}"
-            data-pattern-error="Username must be at least 3 characters long"
+            data-pattern-error="Email must be at least 3 characters long"
           />
-          {errors.username && (
-            <div className="form__error">{errors.username}</div>
-          )}
+          {errors.email && <div className="form__error">{errors.email}</div>}
 
           <input
             className="login__input"
