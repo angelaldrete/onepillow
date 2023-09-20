@@ -3,62 +3,36 @@ import CustomersSearchBar from "./components/CustomersSearchBar";
 import CustomersList from "./components/CustomersList";
 import Customer from "./types/Customer";
 import AddButton from "@/app/components/Button/AddButton";
+import { MdSearch } from "react-icons/md";
 
-const Customers = () => {
-  const customers: Customer[] = [
-    {
-      id: 1,
-      name: "John Doe",
-      email: "example@example.com",
-      phone: "123456789",
-      address: "123 Main Street",
-      city: "New York",
-      state: "NY",
-      zip: "12345",
-      country: "USA",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      email: "example@example.com",
-      phone: "123456789",
-      address: "123 Main Street",
-      city: "New York",
-      state: "NY",
-      zip: "12345",
-      country: "USA",
-    },
-    {
-      id: 3,
-      name: "John Doe",
-      email: "example@example.com",
-      phone: "123456789",
-      address: "123 Main Street",
-      city: "New York",
-      state: "NY",
-      zip: "12345",
-      country: "USA",
-    },
-    {
-      id: 4,
-      name: "John Doe",
-      email: "example@example.com",
-      phone: "123456789",
-      address: "123 Main Street",
-      city: "New York",
-      state: "NY",
-      zip: "12345",
-      country: "USA",
-    },
-  ];
+async function getCustomers() {
+  const response = await fetch("http://localhost:3000/api/customer");
+  const data = await response.json();
+  return data.customers;
+}
+
+const Customers = async () => {
+  const customers: Customer[] = await getCustomers();
 
   return (
     <div className="customers">
       <header className="customers__header">
         <h1 className="customers__title">Customers</h1>
-        <CustomersSearchBar />
+        <form className="search-bar" action="/admin/customers/search">
+          <MdSearch />
+          <input
+            className="input"
+            type="text"
+            placeholder="Search for a customer"
+            name="query"
+          />
+        </form>
       </header>
-      <CustomersList customers={customers} />
+      {customers.length > 0 ? (
+        <CustomersList customers={customers} />
+      ) : (
+        <div className="customers__empty">No customers found</div>
+      )}
       <AddButton to="/admin/customers/new" />
     </div>
   );

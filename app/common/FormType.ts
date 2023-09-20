@@ -1,6 +1,6 @@
 enum FormType {
-  CREATE = 'CREATE',
-  UPDATE = 'UPDATE',
+  CREATE = 'POST',
+  UPDATE = 'PUT',
 }
 
 export default FormType;

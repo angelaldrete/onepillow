@@ -1,22 +1,27 @@
+"use client";
 import React from "react";
 import { MdSearch } from "react-icons/md";
 
 interface SearchBarProps {
-  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearch: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ handleSearch, placeholder }) => {
   return (
-    <span className="search-bar">
+    <form className="search-bar">
       <MdSearch />
       <input
         className="input"
         type="text"
         placeholder={placeholder}
-        onChange={handleSearch}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch(e);
+          }
+        }}
       />
-    </span>
+    </form>
   );
 };
 

@@ -7,6 +7,7 @@ import Field from "@/app/common/types/Field";
 import FieldType from "@/app/common/FieldType";
 import Modal from "@/app/components/Modal";
 import FormType from "@/app/common/FormType";
+import { redirect } from "next/navigation";
 
 interface AppFormProps {
   action: string;
@@ -15,6 +16,7 @@ interface AppFormProps {
   modalTitle?: string;
   modalMessage?: string;
   modalActions?: React.ReactNode;
+  redirectPath?: string;
 }
 
 const AppForm: React.FC<AppFormProps> = ({
@@ -24,6 +26,7 @@ const AppForm: React.FC<AppFormProps> = ({
   modalTitle,
   modalMessage,
   modalActions,
+  redirectPath,
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -67,8 +70,27 @@ const AppForm: React.FC<AppFormProps> = ({
     // if there are no errors, submit the form
     if (Object.keys(newErrors).length === 0) {
       // submit the form
-      console.log("submitting the form");
-      setIsOpen(true);
+      if (type === FormType.UPDATE) {
+        setIsOpen(true);
+      } else if (type === FormType.CREATE) {
+        fetch(action, {
+          method: "POST",
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error("Something went wrong");
+          })
+          .then((data) => {
+            // redirect to the list of data that comes from the history object
+            redirect(redirectPath!);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     }
   };
 

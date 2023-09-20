@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDom from "react-dom";
 import { MdClose } from "react-icons/md";
 
 interface ModalProps {
@@ -51,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({
             <div className="modal__actions">
               {actions}
               <button className="btn btn--cancel" onClick={handleClose}>
-                Cancelar
+                Cancel
               </button>
             </div>
           )}
