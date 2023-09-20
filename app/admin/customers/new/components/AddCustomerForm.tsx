@@ -7,9 +7,10 @@ import FormType from "@/app/common/FormType";
 const AddCustomerForm = () => {
   return (
     <AppForm
-      action="/api/admin/customers"
+      action="/api/customer"
       fields={CustomerFields}
       type={FormType.CREATE}
+      redirectPath="/admin/customers"
     />
   );
 };

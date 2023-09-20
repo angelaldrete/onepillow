@@ -1,16 +1,20 @@
-"use client";
+"use server";
 import SearchBar from "@/app/components/SearchBar";
 import React from "react";
 
-const CustomersSearchBar = () => {
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
-  };
+interface CustomerSearchBarProps {
+  handleSearch: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+}
 
+const CustomersSearchBar: React.FC<CustomerSearchBarProps> = ({
+  handleSearch,
+}) => {
   return (
     <SearchBar
       placeholder="Search for a customer"
-      handleSearch={handleSearch}
+      handleSearch={(e) => {
+        handleSearch(e);
+      }}
     />
   );
 };

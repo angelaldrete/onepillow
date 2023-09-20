@@ -66,11 +66,9 @@ export async function POST(request: Request) {
   }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE(request: Request, { params }: { params: { id: string }}) {
   try {
-    const { searchParams } = new URL(request.url);
-  
-    const id = searchParams.get("id");
+    const id = params.id;
   
     if (!id) {
       return NextResponse.next();
