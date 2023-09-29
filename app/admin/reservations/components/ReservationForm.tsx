@@ -262,7 +262,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ id, type }) => {
       setCustomers
     );
     getOptions(`${process.env.NEXT_PUBLIC_BASE_URL}/api/room`, setRooms);
-  }, []);
+  }, [id, type]);
 
   return (
     <>

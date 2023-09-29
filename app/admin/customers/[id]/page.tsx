@@ -38,7 +38,7 @@ const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
       setCustomer(data.customer);
     };
     getCustomer();
-  }, []);
+  }, [id]);
 
   const navigateTo = (path: string) => {
     router.push(path);

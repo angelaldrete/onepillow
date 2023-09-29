@@ -21,7 +21,7 @@ const EditCustomerForm: React.FC<EditCustomerFormProps> = ({ id }) => {
       setCustomer(data.customer);
     };
     getCustomer();
-  }, []);
+  }, [id]);
 
   return (
     <AppForm

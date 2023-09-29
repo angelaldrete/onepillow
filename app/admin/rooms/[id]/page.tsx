@@ -31,7 +31,7 @@ const SingleRoom: React.FC<SingleRoomProps> = ({ params: { id } }) => {
       setRoom(data.room);
     };
     getRoom();
-  }, []);
+  }, [id]);
 
   const router = useRouter();
 

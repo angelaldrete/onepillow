@@ -30,7 +30,7 @@ const Day: React.FC<DayProps> = ({ day, fullDate, reservations }) => {
       }
     );
     setFilteredReservations(filteredReservationsArray);
-  }, [reservations]);
+  }, [reservations, fullDate]);
 
   if (
     fullDate.getDate() < new Date().getDate() &&
