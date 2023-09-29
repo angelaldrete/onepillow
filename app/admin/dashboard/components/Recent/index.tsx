@@ -1,3 +1,4 @@
+"use client";
 import useRecent from "../../hooks/useRecent";
 import RecentReservationItem from "./RecentReservationItem";
 
