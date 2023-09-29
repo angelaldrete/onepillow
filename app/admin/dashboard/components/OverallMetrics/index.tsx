@@ -3,7 +3,8 @@ import useOverallMetrics from "../../hooks/useOverallMetrics";
 import MetricItem from "./MetricItem";
 
 const OverallMetrics = () => {
-  const listItems = useOverallMetrics();
+  // const listItems = useOverallMetrics();
+  const listItems: any[] = [];
   return (
     <>
       <ul className="overall-metrics__list">

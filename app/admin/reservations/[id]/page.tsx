@@ -27,7 +27,7 @@ const SingleReservation: React.FC<SingleReservationProps> = ({
       setReservation(data.reservation);
     };
     getReservation();
-  }, []);
+  }, [id]);
 
   const router = useRouter();
 

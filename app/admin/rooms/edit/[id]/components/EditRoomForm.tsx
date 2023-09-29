@@ -21,7 +21,7 @@ const EditRoomForm: React.FC<EditRoomForm> = ({ id }) => {
       setRoom(data.room);
     };
     getRoom();
-  }, []);
+  }, [id]);
 
   return (
     <AppForm

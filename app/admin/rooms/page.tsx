@@ -4,13 +4,14 @@ import AddButton from "@/app/components/Button/AddButton";
 import { MdSearch } from "react-icons/md";
 
 async function getRooms() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/room`, {
-    next: {
-      revalidate: 60,
-    },
-  });
-  const data = await response.json();
-  return data.rooms;
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/room`, {
+  //   next: {
+  //     revalidate: 60,
+  //   },
+  // });
+  // const data = await response.json();
+  // return data.rooms;
+  return [];
 }
 
 const Rooms = async () => {
