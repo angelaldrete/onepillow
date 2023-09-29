@@ -1,7 +1,7 @@
 import useRecent from "../../hooks/useRecent";
 import RecentReservationItem from "./RecentReservationItem";
 
-const Recent = async () => {
+const Recent = () => {
   const recentItems: RecentReservation[] = useRecent();
   return (
     <>
