@@ -4,16 +4,16 @@ import AddButton from "@/app/components/Button/AddButton";
 import { MdSearch } from "react-icons/md";
 
 async function getCustomers() {
-  // const response = await fetch(
-  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/customer`,
-  //   {
-  //     next: {
-  //       revalidate: 60,
-  //     },
-  //   }
-  // );
-  // const data = await response.json();
-  // return data.customers;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/customer`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
+  const data = await response.json();
+  return data.customers;
   return [];
 }
 
