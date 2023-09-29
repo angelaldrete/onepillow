@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic'
 export async function GET(request: Request) {
   try {
     const totalReservations = await prisma.reservation.count();
@@ -17,7 +18,7 @@ export async function GET(request: Request) {
       totalReservations: totalReservations,
     });
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 
 }

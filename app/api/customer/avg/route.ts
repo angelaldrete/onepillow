@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../_config";
 
+export const dynamic = 'force-dynamic'
 export async function GET(request: Request) {
   try {
     const totalCustomers = await prisma.customer.count(
@@ -34,6 +35,6 @@ export async function GET(request: Request) {
       avgCustomers: Math.floor(avgCustomers),
     });
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }

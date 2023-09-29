@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../_config";
 
+export const dynamic = 'force-dynamic'
 export async function GET(request: Request) {
   try {
     const rooms = await prisma.room.findMany();
@@ -15,7 +16,7 @@ export async function GET(request: Request) {
       rooms: rooms,
     });
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }
 
@@ -41,7 +42,7 @@ export async function POST(request: Request) {
       room: room,
     });
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }
 

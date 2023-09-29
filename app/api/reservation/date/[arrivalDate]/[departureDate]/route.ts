@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../../../_config";
 
+export const dynamic = 'force-dynamic'
 export async function GET(request: Request, { params }: { params: { arrivalDate: string, departureDate: string } }) {
   try {
     const { arrivalDate, departureDate } = params;
@@ -46,6 +47,6 @@ export async function GET(request: Request, { params }: { params: { arrivalDate:
     }
 
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }

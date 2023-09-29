@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../_config";
 
+export const dynamic = 'force-dynamic'
 export async function GET(request: Request, { params } : { params: {id: string}}) {
   try {
     const room = await prisma.room.findUnique({
@@ -25,7 +26,7 @@ export async function GET(request: Request, { params } : { params: {id: string}}
     });
 
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }
 
@@ -56,7 +57,7 @@ export async function PUT(request: Request, { params } : { params: {id: string} 
       room: room,
     });
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }
 
@@ -88,6 +89,6 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       room: room,
     });
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }
