@@ -25,6 +25,6 @@ export async function GET(request: Request) {
     });
     
   } catch (error) {
-    return NextResponse.error();
+    return NextResponse.json({ message: 'Error' })
   }
 }

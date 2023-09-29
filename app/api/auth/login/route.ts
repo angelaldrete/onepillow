@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 
     if (email === 'admin' && password === 'admin') {
       return NextResponse.json({
-        message: "Admin login successfully",
+      message: "Admin login successfully",
         status: 200,
       });
     }
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const users = await prisma.user.findMany();
 
     if (users.length === 0) {
-      return NextResponse.error();
+      return NextResponse.json({ message: 'Error' })
     }
 
     const user = await prisma.user.findUnique({
