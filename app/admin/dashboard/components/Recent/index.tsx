@@ -2,7 +2,7 @@ import useRecent from "../../hooks/useRecent";
 import RecentReservationItem from "./RecentReservationItem";
 
 const Recent = async () => {
-  const recentItems: RecentReservation[] = await useRecent();
+  const recentItems: RecentReservation[] = useRecent();
   return (
     <>
       <ul className="recent__list">
