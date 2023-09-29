@@ -135,7 +135,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ id, type }) => {
       } else {
         try {
           const responseData = await fetchJson(
-            "http://localhost:3000/api/reservation",
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation`,
             {
               method: "POST",
               headers: {
@@ -257,8 +257,11 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ id, type }) => {
   };
 
   useEffect(() => {
-    getOptions("http://localhost:3000/api/customer", setCustomers);
-    getOptions("http://localhost:3000/api/room", setRooms);
+    getOptions(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/customer`,
+      setCustomers
+    );
+    getOptions(`${process.env.NEXT_PUBLIC_BASE_URL}/api/room`, setRooms);
   }, []);
 
   return (

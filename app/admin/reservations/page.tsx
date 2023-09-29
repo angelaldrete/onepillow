@@ -4,11 +4,14 @@ import Reservation from "./types/Reservation";
 import { MdSearch } from "react-icons/md";
 
 async function getReservations() {
-  const response = await fetch("http://localhost:3000/api/reservation", {
-    next: {
-      revalidate: 60,
-    },
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
   const data = await response.json();
   return data.reservations;
 }

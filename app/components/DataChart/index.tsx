@@ -19,7 +19,7 @@ const DataChart = () => {
   useEffect(() => {
     const getData = async () => {
       const response = await fetch(
-        "http://localhost:3000/api/reservation/month"
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/month`
       );
       const data = await response.json();
       setData(data.monthlyReservations);

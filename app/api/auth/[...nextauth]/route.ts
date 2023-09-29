@@ -8,7 +8,7 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       credentials: {},
       async authorize(credentials: any) : Promise<any> {
-        const res = await fetch("http://localhost:3000/api/auth/login", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/login`, {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },

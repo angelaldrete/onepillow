@@ -4,7 +4,7 @@ import AddButton from "@/app/components/Button/AddButton";
 import { MdSearch } from "react-icons/md";
 
 async function getRooms() {
-  const response = await fetch("http://localhost:3000/api/room", {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/room`, {
     next: {
       revalidate: 60,
     },
