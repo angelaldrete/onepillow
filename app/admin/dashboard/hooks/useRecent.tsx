@@ -1,15 +1,14 @@
-async function getRecentItems() {
-  const res = await fetch(`http://localhost:3000/api/reservation/recent`, {
-    next: {
-      revalidate: 60,
-    },
-  });
-  const data = await res.json();
-  return data.recentReservations;
-}
+import React from "react";
 
-const useRecent = async () => {
-  const recentItems: RecentReservation[] = await getRecentItems();
+const useRecent = () => {
+  const [recentItems, setRecentItems] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(`http://localhost:3000/api/reservation/recent`, {})
+      .then((res) => res.json())
+      .then((data) => setRecentItems(data.recentReservations))
+      .catch((err) => console.log(err));
+  }, []);
 
   return recentItems;
 };
