@@ -14,7 +14,6 @@ async function getReservations() {
   );
   const data = await response.json();
   return data.reservations;
-  return [];
 }
 
 const Reservations = async () => {

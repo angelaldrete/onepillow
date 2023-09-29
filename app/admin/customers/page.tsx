@@ -14,7 +14,6 @@ async function getCustomers() {
   );
   const data = await response.json();
   return data.customers;
-  return [];
 }
 
 const Customers = async () => {

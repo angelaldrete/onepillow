@@ -11,7 +11,6 @@ async function getRooms() {
   });
   const data = await response.json();
   return data.rooms;
-  return [];
 }
 
 const Rooms = async () => {
