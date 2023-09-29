@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const users = await prisma.user.findMany();
 
     if (users.length === 0) {
-      return Response.error();
+      return NextResponse.error();
     }
 
     const user = await prisma.user.findUnique({
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     });
 
     if (!user) {
-      return Response.json({
+      return NextResponse.json({
         message: "User not found",
       });
 
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
     if (!passwordMatch) {
 
-      return Response.json({
+      return NextResponse.json({
         message: "Password is incorrect",
       });
     }
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     return user;
 
   } catch (error) {
-    return Response.json({
+    return NextResponse.json({
       message: "Error",
       status: 500,
     });
