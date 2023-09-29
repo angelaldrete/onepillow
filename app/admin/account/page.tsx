@@ -1,30 +1,24 @@
-import React from "react";
+"use client";
 import UserHeader from "./components/UserHeader";
 import UserDetails from "./components/UserDetails";
-import Card from "@/app/components/Card";
+import { useSession } from "next-auth/react";
 
 const Account = () => {
-  const user: User = {
-    id: 1,
-    name: "John Doe",
-    image: "https://via.placeholder.com/150",
-    email: "email@email.com",
-    location: "London",
-    gender: "M",
-    password: "password",
-  };
+  const { data: session } = useSession();
 
   return (
     <div className="account">
       <header className="account__header">
         <h1 className="account__title">Account</h1>
-        <UserHeader name={user.name} image={user.image} />
+        {session?.user?.name}
+        <UserHeader
+          name={session?.user?.name || ""}
+          image={session?.user?.image || ""}
+        />
       </header>
       <UserDetails
         details={{
-          email: user.email,
-          location: user.location,
-          gender: user.gender,
+          email: session?.user?.email || "",
         }}
       />
     </div>

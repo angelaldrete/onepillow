@@ -1,47 +1,40 @@
-import React from "react";
-import RoomsSearchBar from "./components/RoomsSearchBar";
 import RoomsList from "./components/RoomsList";
 import Room from "./types/Room";
 import AddButton from "@/app/components/Button/AddButton";
+import { MdSearch } from "react-icons/md";
 
-const Rooms = () => {
-  const rooms: Room[] = [
-    {
-      id: 1,
-      name: "Room 1",
-      description: "Room 1 description",
-      capacity: 4,
-      price: 100,
-      available: true,
-      image: "https://via.placeholder.com/150",
+async function getRooms() {
+  const response = await fetch("http://localhost:3000/api/room", {
+    next: {
+      revalidate: 60,
     },
-    {
-      id: 2,
-      name: "Room 2",
-      description: "Room 2 description",
-      capacity: 4,
-      price: 100,
-      available: true,
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 3,
-      name: "Room 3",
-      description: "Room 3 description",
-      capacity: 4,
-      price: 100,
-      available: true,
-      image: "https://via.placeholder.com/150",
-    },
-  ];
+  });
+  const data = await response.json();
+  return data.rooms;
+}
+
+const Rooms = async () => {
+  const rooms: Room[] = await getRooms();
 
   return (
     <div className="rooms">
       <header className="rooms__header">
         <h1 className="rooms__title">Rooms</h1>
-        <RoomsSearchBar />
+        <form className="search-bar" action="/admin/rooms/search">
+          <MdSearch />
+          <input
+            className="input"
+            type="text"
+            placeholder="Search for a room"
+            name="query"
+          />
+        </form>
       </header>
-      <RoomsList rooms={rooms} />
+      {rooms.length > 0 ? (
+        <RoomsList rooms={rooms} />
+      ) : (
+        <div className="rooms__empty">No rooms found</div>
+      )}
       <AddButton to="/admin/rooms/new" />
     </div>
   );

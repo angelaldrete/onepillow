@@ -51,7 +51,7 @@ export const CustomerFields: Field[] = [
     patternError: "State must be at least 3 characters long",
   },
   {
-    name: "zip-code",
+    name: "zip",
     label: "Zip Code",
     type: FieldType.Number,
     placeholder: "Zip Code",

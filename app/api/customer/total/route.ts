@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "../../_config";
 
 export async function GET(request: Request) {
   try {
@@ -9,7 +7,7 @@ export async function GET(request: Request) {
 
     if (!totalCustomers) {
       return NextResponse.json({
-        message: "No customers found",
+        value: 0,
       });
     }
 

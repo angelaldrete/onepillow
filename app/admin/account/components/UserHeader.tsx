@@ -3,7 +3,7 @@ import Card from "@/app/components/Card";
 
 interface UserHeaderProps {
   name: string;
-  image: string;
+  image?: string;
 }
 
 const UserHeader: React.FC<UserHeaderProps> = ({ name, image }) => {
@@ -14,7 +14,7 @@ const UserHeader: React.FC<UserHeaderProps> = ({ name, image }) => {
       }}
       className="user__header"
     >
-      <img src={image} alt="User avatar" className="user__image" />
+      {image && <img src={image} alt="User avatar" className="user__image" />}
       <div className="user__name">{name}</div>
     </Card>
   );

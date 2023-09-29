@@ -1,14 +1,13 @@
+import Customer from "../../customers/types/Customer";
+import Room from "../../rooms/types/Room";
+
 interface Reservation {
   id: number;
   name: string;
-  email: string;
-  phone: string;
-  address: string;
-  checkInDate: string;
-  checkOutDate: string;
-  roomType: string;
-  numberOfGuests: number;
-  bedPreferences: string;
+  arrivalDate: string;
+  departureDate: string;
+  customer: Customer;
+  room: Room;
 }
 
 export default Reservation;

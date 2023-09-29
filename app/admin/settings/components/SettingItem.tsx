@@ -21,6 +21,11 @@ const SettingItem: React.FC<SettingItemProps> = ({ setting, idx }) => {
         <strong>{setting.name}</strong>
       </div>
       <div className="setting__description">{setting.description}</div>
+      {setting.onClick && (
+        <button className="btn btn--submit" onClick={setting.onClick}>
+          Toggle
+        </button>
+      )}
     </Card>
   );
 };

@@ -1,13 +1,11 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import "../styles/main.css";
-import { AuthProvider } from "./providers/AuthProvider";
 import { Metadata } from "next";
-import BaseContainer from "./components/Base/BaseContainer";
 
 export const metadata: Metadata = {
-  title: "Next.js + TypeScript + Tailwind CSS",
-  description: "Next.js + TypeScript + Tailwind CSS",
+  title: "One Pillow | Reservation System",
+  description:
+    "One Pillow is a reservation system for hotels and other hospitality businesses.",
 };
 
 export default async function RootLayout({

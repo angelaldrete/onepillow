@@ -48,4 +48,15 @@
     border-radius: 0.5rem;
     background-color: white;
   }
+
+  &--danger {
+    background-image: linear-gradient(
+      to left top,
+      var(--danger-color) 0%,
+      var(--danger-color-dark) 80%
+    );
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+  }
 }

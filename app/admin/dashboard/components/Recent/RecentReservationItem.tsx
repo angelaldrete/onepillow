@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface RecentReservationItemProps {
@@ -9,17 +10,24 @@ const RecentReservationItem: React.FC<RecentReservationItemProps> = ({
 }) => {
   return (
     <>
-      <div className="recent__item__info">
-        <h3 className="recent__item__name">{recentItem.name}</h3>
-      </div>
-
-      <div className="recent__item__status">
-        <span
-          className={`recent__item__status__dot recent__item__status__dot--${recentItem.status.toLowerCase()}`}
-        >
-          {recentItem.status}
-        </span>
-      </div>
+      {Object.entries(recentItem).map(([key, value]) => {
+        if (!value || key === "id") return null;
+        return (
+          <Link
+            href="/admin/reservations/[id]"
+            as={`/admin/reservations/${recentItem.id}`}
+            key={key}
+          >
+            <div key={key} className="recent__item__info">
+              <p className="recent__item__detail">
+                {key === "arrivalDate" || key === "departureDate"
+                  ? new Date(value).toISOString().split("T")[0]
+                  : value}
+              </p>
+            </div>
+          </Link>
+        );
+      })}
     </>
   );
 };

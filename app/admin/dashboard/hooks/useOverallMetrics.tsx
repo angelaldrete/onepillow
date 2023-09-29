@@ -1,29 +1,39 @@
-import React from "react";
-
 const useOverallMetrics = () => {
   const listItems: MetricCard[] = [
     {
       id: 1,
       metricTitle: "Total reservations",
-      metricData: 24,
+      metricData: {
+        url: "/api/reservation/total",
+        returnObject: "totalReservations",
+      },
       gradientColors: ["var(--primary-color)", "var(--secondary-color)"],
     },
     {
       id: 2,
       metricTitle: "Avg. reservations",
-      metricData: 124,
+      metricData: {
+        url: "/api/reservation/avg",
+        returnObject: "avgReservations",
+      },
       gradientColors: ["var(--quinary-color)", "var(--secondary-color)"],
     },
     {
       id: 3,
       metricTitle: "Total customers",
-      metricData: 12,
+      metricData: {
+        url: "/api/customer/total",
+        returnObject: "totalCustomers",
+      },
       gradientColors: ["var(--primary-color)", "var(--tertiary-color)"],
     },
     {
       id: 4,
       metricTitle: "Avg customers",
-      metricData: 24,
+      metricData: {
+        url: "/api/customer/avg",
+        returnObject: "avgCustomers",
+      },
       gradientColors: ["var(--tertiary-color)", "var(--quinary-color)"],
     },
   ];

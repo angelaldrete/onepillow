@@ -3,22 +3,33 @@ import React from "react";
 import { RoomFields } from "@/app/admin/rooms/common/RoomFields";
 import AppForm from "@/app/components/AppForm/AppForm";
 import FormType from "@/app/common/FormType";
-import CancelButton from "@/app/components/Button/CancelButton";
-import SubmitButton from "@/app/components/Button/SubmitButton";
+import { Room } from "@prisma/client";
 
-const EditRoomForm = () => {
+interface EditRoomForm {
+  id: string | string[];
+}
+
+const EditRoomForm: React.FC<EditRoomForm> = ({ id }) => {
+  const [room, setRoom] = React.useState<Room>(Object);
+
+  React.useEffect(() => {
+    const getRoom = async () => {
+      const response = await fetch(`http://localhost:3000/api/room/${id}`);
+      const data = await response.json();
+      setRoom(data.room);
+    };
+    getRoom();
+  }, []);
+
   return (
     <AppForm
-      action="/api/admin/rooms"
+      action={`/api/room/${id}`}
       fields={RoomFields}
       type={FormType.UPDATE}
+      values={room}
+      redirectPath="/admin/rooms"
       modalTitle="Edit Room"
       modalMessage="Are you sure you want to edit this room?"
-      modalActions={
-        <>
-          <div></div>
-        </>
-      }
     />
   );
 };

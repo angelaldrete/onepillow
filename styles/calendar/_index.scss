@@ -74,66 +74,74 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 2px;
+  }
 
-    &__day {
-      position: relative;
+  &__day {
+    position: relative;
+    animation: fade-in 0.3s ease-in-out forwards;
+
+    & > * {
       background-color: var(--card-color);
-      animation: fade-in 0.3s ease-in-out forwards;
+      display: block;
+      position: relative;
+      font-size: clamp(1rem, 2vw, 1.6rem);
+      height: clamp(7.5rem, 10vw, 12rem);
+      padding: clamp(0.5rem, 2vw, 2.5rem);
+    }
 
-      &--past {
-        opacity: 0.5;
-        background-color: var(--disabled-color);
+    &--past {
+      opacity: 0.5;
+      background-color: var(--disabled-color);
+    }
+
+    &--today {
+      outline: 2px solid var(--primary-color);
+    }
+
+    &--low {
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        top: 95%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        background-color: #4caf50;
+        box-shadow: 0 0 10px var(--box-shadow);
       }
+    }
 
-      &--today {
-        outline: 2px solid var(--primary-color);
+    &--medium {
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        top: 95%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        background-color: #ffc107;
+        box-shadow: 0 0 10px var(--box-shadow);
       }
+    }
 
-      &--low {
-        &::after {
-          position: absolute;
-          content: "";
-          display: block;
-          top: 95%;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 1;
-          background-color: #4caf50;
-          box-shadow: 0 0 10px var(--box-shadow);
-        }
-      }
-
-      &--medium {
-        &::after {
-          position: absolute;
-          content: "";
-          display: block;
-          top: 95%;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 1;
-          background-color: #ffc107;
-          box-shadow: 0 0 10px var(--box-shadow);
-        }
-      }
-
-      &--full {
-        opacity: 0.5;
-        background-color: #e53935;
-        &::after {
-          position: absolute;
-          content: "";
-          display: block;
-          top: 95%;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 1;
-          background-color: #6c1a19;
-          box-shadow: 0 0 10px var(--box-shadow);
-        }
+    &--full {
+      opacity: 0.5;
+      background-color: #e53935;
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        top: 95%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        background-color: #6c1a19;
+        box-shadow: 0 0 10px var(--box-shadow);
       }
     }
   }

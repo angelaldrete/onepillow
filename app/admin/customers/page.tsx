@@ -1,12 +1,14 @@
-import React from "react";
-import CustomersSearchBar from "./components/CustomersSearchBar";
 import CustomersList from "./components/CustomersList";
 import Customer from "./types/Customer";
 import AddButton from "@/app/components/Button/AddButton";
 import { MdSearch } from "react-icons/md";
 
 async function getCustomers() {
-  const response = await fetch("http://localhost:3000/api/customer");
+  const response = await fetch("http://localhost:3000/api/customer", {
+    next: {
+      revalidate: 60,
+    },
+  });
   const data = await response.json();
   return data.customers;
 }

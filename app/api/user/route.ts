@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
-
-const prisma = new PrismaClient();
-
+import { prisma } from "../_config";
 
 export async function POST(request: Request) {
   try {
@@ -64,32 +61,4 @@ export async function POST(request: Request) {
   } catch (error) {
     return NextResponse.next();
   }
-}
-
-export async function DELETE(request: Request, { params }: { params: { id: string }}) {
-  try {
-    const id = params.id;
-  
-    if (!id) {
-      return NextResponse.next();
-    }
-  
-    const user = await prisma.user.delete({
-      where: {
-        id: parseInt(id),
-      },
-    });
-  
-    if (!user) {
-      return NextResponse.next();
-    }
-  
-    return NextResponse.json({
-      message: "User deleted successfully",
-      user,
-    });
-  } catch (error) {
-    return NextResponse.next();
-  }
-
 }

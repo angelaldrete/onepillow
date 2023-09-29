@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./Header";
 import Days from "./Days";
 import Weekdays from "./Weekdays";
 import MonthControlsAction from "../../types/MonthControlsAction";
 import AddButton from "@/app/components/Button/AddButton";
+import Reservation from "@/app/admin/reservations/types/Reservation";
 
 const CalendarMonth = () => {
   const [date, setDate] = React.useState(new Date());
@@ -13,6 +14,7 @@ const CalendarMonth = () => {
   const [daysInMonth, setDaysInMonth] = React.useState(
     new Date(year, month, 0).getDate()
   );
+  const [reservations, setReservations] = React.useState<Reservation[]>([]);
 
   const handleMonthControls = (action: MonthControlsAction) => {
     if (action === MonthControlsAction.Previous) {
@@ -34,16 +36,21 @@ const CalendarMonth = () => {
     "Saturday",
   ];
 
-  const daysInMonthArray: {
-    day: number;
-    fullDate: Date;
-    reservationsLength: number;
-  }[] = Array.from({ length: daysInMonth }, (_, index) => {
-    const day = index + 1;
+  const daysInMonthArray = [];
+
+  for (let i = 1; i <= daysInMonth; i++) {
+    const day = i;
     const fullDate = new Date(year, month - 1, day);
-    const reservationsLength = Math.floor(Math.random() * 10) + 1;
-    return { day, fullDate, reservationsLength };
-  });
+    daysInMonthArray.push({ day, fullDate });
+  }
+
+  React.useEffect(() => {
+    setDaysInMonth(new Date(year, month, 0).getDate());
+    fetch(`http://localhost:3000/api/reservation/calendar/${month}/${year}`)
+      .then((res) => res.json())
+      .then((data) => setReservations(data.reservations))
+      .catch((err) => console.log(err));
+  }, [month, year]);
 
   return (
     <div className="calendar-month">
@@ -56,7 +63,11 @@ const CalendarMonth = () => {
           year={year}
         />
         <Weekdays weekdays={weekdays} />
-        <Days weekdays={weekdays} days={daysInMonthArray} />
+        <Days
+          weekdays={weekdays}
+          days={daysInMonthArray}
+          reservations={reservations}
+        />
         <ul className="calendar-month__legends">
           <li className="calendar-month__legends__legend">
             <span className="calendar-month__legends__legend--low">1-4</span>

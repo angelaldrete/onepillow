@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import SettingsList from "./components/SettingsList";
 import Setting from "./types/Settings";
 
@@ -8,30 +7,9 @@ const Settings = () => {
     {
       name: "Dark Mode",
       description: "Enable dark mode",
-    },
-    {
-      name: "Notifications",
-      description: "Enable notifications",
-    },
-    {
-      name: "Email Notifications",
-      description: "Enable email notifications",
-    },
-    {
-      name: "Push Notifications",
-      description: "Enable push notifications",
-    },
-    {
-      name: "Change Password",
-      description: "Change your password",
-    },
-    {
-      name: "Delete Account",
-      description: "Delete your account",
-    },
-    {
-      name: "Export Data",
-      description: "Export your data",
+      onClick: () => {
+        document.body.classList.toggle("dark");
+      },
     },
   ];
 

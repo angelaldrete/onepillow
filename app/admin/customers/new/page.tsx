@@ -1,4 +1,3 @@
-import React from "react";
 import AddCustomerForm from "./components/AddCustomerForm";
 
 const AddCustomer = () => {

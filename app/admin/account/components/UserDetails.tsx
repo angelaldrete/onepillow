@@ -3,9 +3,7 @@ import React from "react";
 
 interface UserDetailsProps {
   details: {
-    email: string;
-    gender: string;
-    location: string;
+    email?: string;
   };
 }
 
@@ -19,14 +17,6 @@ const UserDetails: React.FC<UserDetailsProps> = ({ details }) => {
       >
         <li>
           <strong>Email:</strong> {details.email}
-        </li>
-
-        <li>
-          <strong>Gender:</strong> {details.gender}
-        </li>
-
-        <li>
-          <strong>Location:</strong> {details.location}
         </li>
       </Card>
     </ul>

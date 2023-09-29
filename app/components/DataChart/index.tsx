@@ -9,35 +9,27 @@ import {
   Area,
   Tooltip,
 } from "recharts";
-import { format, parseISO, subDays } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { useState, useEffect } from "react";
 import ChartData from "@/app/common/types/ChartData";
 
-const data: ChartData[] = [];
-
-for (let num = 30; num >= 0; num--) {
-  data.push({
-    date: format(subDays(new Date(), num), "yyyy-MM-dd"),
-    value: Math.floor(Math.random() * 1000),
-  });
-}
-
 const DataChart = () => {
-  const [showAxises, setShowAxises] = useState(true);
+  const [data, setData] = useState<ChartData[]>([]);
 
   useEffect(() => {
-    const handleResize = () => {
-      const isSmallScreen = window.matchMedia("(max-width: 600px)").matches;
-      setShowAxises(!isSmallScreen);
+    const getData = async () => {
+      const response = await fetch(
+        "http://localhost:3000/api/reservation/month"
+      );
+      const data = await response.json();
+      setData(data.monthlyReservations);
     };
-
-    handleResize(); // Initial check on mount
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    getData();
   }, []);
+
+  if (data === null || data.length === 0) {
+    return null;
+  }
 
   return (
     <ResponsiveContainer
@@ -72,7 +64,6 @@ const DataChart = () => {
           }}
           allowDataOverflow
           fontSize={"clamp(1rem, 1vw, 1.6rem)"}
-          hide={!showAxises}
         />
 
         <YAxis
@@ -83,7 +74,6 @@ const DataChart = () => {
           allowDataOverflow
           interval={0}
           fontSize={"clamp(1rem, 1vw, 1.6rem)"}
-          hide={!showAxises}
         />
 
         <Tooltip
@@ -104,7 +94,17 @@ const DataChart = () => {
   );
 };
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: any;
+  label?: any;
+}
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({
+  active,
+  payload,
+  label,
+}) => {
   if (active) {
     return (
       <div
@@ -122,7 +122,9 @@ const CustomTooltip = ({ active, payload, label }: any) => {
             color: "#df4496",
             fontSize: "clamp(1rem, 1vw, 1.8rem)",
           }}
-        >{`$ ${payload[0].value.toFixed(2)}`}</p>
+        >
+          {payload[0].value.toFixed(2)}
+        </p>
       </div>
     );
   }

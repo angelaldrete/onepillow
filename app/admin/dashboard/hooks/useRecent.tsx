@@ -1,29 +1,16 @@
-import React from "react";
+async function getRecentItems() {
+  const res = await fetch(`http://localhost:3000/api/reservation/recent`, {
+    next: {
+      revalidate: 60,
+    },
+  });
+  const data = await res.json();
+  return data.recentReservations;
+}
 
-const useRecent = () => {
-  const recentItems: RecentReservation[] = [
-    {
-      id: 1,
-      name: "John Doe",
-      date: "2020-01-01",
-      roomId: 1,
-      status: "Pending",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      date: "2020-01-01",
-      roomId: 1,
-      status: "Pending",
-    },
-    {
-      id: 3,
-      name: "John Doe",
-      date: "2020-01-01",
-      roomId: 1,
-      status: "Pending",
-    },
-  ];
+const useRecent = async () => {
+  const recentItems: RecentReservation[] = await getRecentItems();
+
   return recentItems;
 };
 

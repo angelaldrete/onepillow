@@ -4,16 +4,29 @@ import Card from "@/app/components/Card";
 interface MetricItemProps {
   id: number;
   metricTitle: string;
-  metricData: string | number;
+  metricData: any;
   gradientColors: string[];
 }
 
-const MetricItem: React.FC<MetricItemProps> = ({
+async function getMetricData(metricData: any) {
+  const res = await fetch(`http://localhost:3000${metricData.url}`, {
+    next: {
+      revalidate: 60,
+    },
+  });
+  const data = await res.json();
+  const metric = Object.values(data)[0];
+  return metric;
+}
+
+const MetricItem: React.FC<MetricItemProps> = async ({
   id,
   metricTitle,
   metricData,
   gradientColors,
 }) => {
+  const data: any = await getMetricData(metricData);
+
   return (
     <Card
       style={{
@@ -22,7 +35,7 @@ const MetricItem: React.FC<MetricItemProps> = ({
       }}
     >
       <p>{metricTitle}</p>
-      <h2 className="metric-data">{metricData}</h2>
+      <h2 className="metric-data">{data}</h2>
     </Card>
   );
 };

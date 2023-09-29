@@ -9,7 +9,7 @@ export async function GET(request: Request) {
 
     if (!totalReservations) {
       return NextResponse.json({
-        message: "No reservations found",
+        message: 0,
       });
     }
 

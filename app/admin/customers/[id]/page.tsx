@@ -13,23 +13,30 @@ interface SingleCustomerProps {
 }
 
 const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
-  const customer: Customer = {
-    id: 1,
-    name: "John Doe",
-    address: "123 Main St",
-    city: "New York",
-    state: "NY",
-    zip: "12345",
-    phone: "123-456-7890",
-    country: "USA",
-    email: "example@example.com",
-    notes:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-  };
+  const [customer, setCustomer] = React.useState<Customer>({
+    id: parseInt(""),
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "",
+  });
 
   const [isOpen, setIsOpen] = React.useState(false);
 
   const router = useRouter();
+
+  React.useEffect(() => {
+    const getCustomer = async () => {
+      const response = await fetch(`http://localhost:3000/api/customer/${id}`);
+      const data = await response.json();
+      setCustomer(data.customer);
+    };
+    getCustomer();
+  }, []);
 
   const navigateTo = (path: string) => {
     router.push(path);
@@ -37,7 +44,19 @@ const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
 
   const handleCustomerDelete = () => {
     setIsOpen(false);
-    navigateTo("/admin/customers");
+    fetch(`http://localhost:3000/api/customer/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          new Error(data.error);
+        }
+        navigateTo("/admin/customers");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -60,6 +79,7 @@ const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
         <Card>
           <div className="customer-single__content">
             {Object.entries(customer).map(([key, value]) => {
+              if (!value) return null;
               if (key === "id") return null;
               return (
                 <div className="customer-single__item" key={key}>

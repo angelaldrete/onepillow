@@ -1,24 +1,37 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "../../_config";
 
 export async function GET(request: Request) {
   try {
-    const avgCustomers = await prisma.customer.aggregate({
-      _avg: {
-        id: true,
-      },
-    });
+    const totalCustomers = await prisma.customer.count(
+      {
+        where: {
+          AND: [
+            {
+              createdAt: {
+                gte: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+              },
+            },
+            {
+              createdAt: {
+                lte: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0),
+              },
+            },
+          ],
+        },
+      }
+    );
+
+    const avgCustomers = totalCustomers / new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
 
     if (!avgCustomers) {
       return NextResponse.json({
-        message: "No customers found",
+        value: 0,
       });
     }
 
     return NextResponse.json({
-      avgCustomers,
+      avgCustomers: Math.floor(avgCustomers),
     });
   } catch (error) {
     return NextResponse.error();

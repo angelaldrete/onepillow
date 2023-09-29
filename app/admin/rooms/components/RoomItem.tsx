@@ -9,7 +9,16 @@ const RoomItem: React.FC<RoomItemProps> = ({ room }) => {
   return (
     <div className="room">
       <div className="room__title">{room.name}</div>
-      <div className="room__description">{room.description}</div>
+      {room.description && (
+        <div className="room__description">
+          <strong>Description</strong>
+          {room.description}
+        </div>
+      )}
+      <div className="room__price">
+        <strong>Price: </strong>
+        {room.price}
+      </div>
     </div>
   );
 };

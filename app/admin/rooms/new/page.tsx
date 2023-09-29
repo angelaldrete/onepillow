@@ -1,4 +1,3 @@
-import React from "react";
 import AddRoomForm from "./components/AddRoomForm";
 
 const AddRoom = () => {

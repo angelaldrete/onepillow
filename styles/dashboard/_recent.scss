@@ -19,7 +19,7 @@
 
   &__item {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     place-items: start;
     font-size: clamp(1rem, 3vw, 1.4rem);
     padding: clamp(1rem, 2vw, 1.5rem);
@@ -29,7 +29,6 @@
     }
     &--header * {
       font-weight: bold;
-      font-size: clamp(1.6rem, 4vw, 2rem);
     }
 
     &:hover:not(:first-child) {

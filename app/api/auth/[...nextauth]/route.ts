@@ -1,71 +1,47 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { NextAuthOptions } from "next-auth";
-import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
-
-const prisma = new PrismaClient();
+import { NextAuthOptions, Session } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       credentials: {},
       async authorize(credentials: any) : Promise<any> {
-
-        try {
-
-          const { email, password } = credentials;
-  
-          const users = await prisma.user.findMany();
-  
-          if (users.length === 0) {
-            return Response.json({
-              message: "No users found",
-            });
-          }
-  
-          const user = await prisma.user.findUnique({
-            where: {
-              email,
-  
-            }
-          });
-  
-          if (!user) {
-            return Response.json({
-              message: "User not found",
-            });
-  
-          }
-  
-          const passwordMatch = await bcrypt.compare(password, user.password);
-
-          if (!passwordMatch) {
-
-            return Response.json({
-              message: "Password is incorrect",
-            });
-          }
-
+        const res = await fetch("http://localhost:3000/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify(credentials),
+          headers: { "Content-Type": "application/json" },
+        });
+        const user = await res.json();
+        if (res.ok && user) {
           return user;
-
-        } catch (error) {
-          return Response.json({
-            message: "Error",
-            status: 500,
-          });
+        } else {
+          return null;
         }
+        
       },
     }),
   ],
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/',
   },
+  callbacks: {
+    async jwt({token, user}) {
+      if (user) {
+        token.user = user;
+      }
+      return token;
+    },
+    async session({session, token}: {session: Session, token: any}) {
+      session.user = token.name;
+      return session;
+    },
+  }
 }
 
 

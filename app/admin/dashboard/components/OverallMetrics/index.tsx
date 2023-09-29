@@ -1,4 +1,3 @@
-import React from "react";
 import useOverallMetrics from "../../hooks/useOverallMetrics";
 import MetricItem from "./MetricItem";
 
