@@ -21,7 +21,7 @@ const SingleReservation: React.FC<SingleReservationProps> = ({
   React.useEffect(() => {
     const getReservation = async () => {
       const response = await fetch(
-        `http://localhost:3000/api/reservation/${id}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/${id}`
       );
       const data = await response.json();
       setReservation(data.reservation);
@@ -37,7 +37,7 @@ const SingleReservation: React.FC<SingleReservationProps> = ({
 
   const handleReservationDelete = () => {
     setIsOpen(false);
-    fetch(`http://localhost:3000/api/reservation/${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

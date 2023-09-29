@@ -15,7 +15,7 @@ const CustomerSearch = () => {
   React.useEffect(() => {
     async function getCustomers() {
       const response = await fetch(
-        `http://localhost:3000/api/customer?query=${query}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/customer?query=${query}`
       );
       const data = await response.json();
       return data.customers;

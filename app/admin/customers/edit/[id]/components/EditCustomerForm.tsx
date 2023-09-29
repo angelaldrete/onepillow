@@ -14,7 +14,9 @@ const EditCustomerForm: React.FC<EditCustomerFormProps> = ({ id }) => {
 
   React.useEffect(() => {
     const getCustomer = async () => {
-      const response = await fetch(`http://localhost:3000/api/customer/${id}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/customer/${id}`
+      );
       const data = await response.json();
       setCustomer(data.customer);
     };

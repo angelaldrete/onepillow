@@ -31,7 +31,9 @@ const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
 
   React.useEffect(() => {
     const getCustomer = async () => {
-      const response = await fetch(`http://localhost:3000/api/customer/${id}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/customer/${id}`
+      );
       const data = await response.json();
       setCustomer(data.customer);
     };
@@ -44,7 +46,7 @@ const SingleCustomer: React.FC<SingleCustomerProps> = ({ params: { id } }) => {
 
   const handleCustomerDelete = () => {
     setIsOpen(false);
-    fetch(`http://localhost:3000/api/customer/${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/customer/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

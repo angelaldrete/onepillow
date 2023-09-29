@@ -46,7 +46,9 @@ const CalendarMonth = () => {
 
   React.useEffect(() => {
     setDaysInMonth(new Date(year, month, 0).getDate());
-    fetch(`http://localhost:3000/api/reservation/calendar/${month}/${year}`)
+    fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/calendar/${month}/${year}`
+    )
       .then((res) => res.json())
       .then((data) => setReservations(data.reservations))
       .catch((err) => console.log(err));

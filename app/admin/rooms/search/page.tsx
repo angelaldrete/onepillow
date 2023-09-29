@@ -15,7 +15,7 @@ const CustomerSearch = () => {
   React.useEffect(() => {
     async function getRooms() {
       const response = await fetch(
-        `http://localhost:3000/api/room?query=${query}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/room?query=${query}`
       );
       const data = await response.json();
       return data.rooms;

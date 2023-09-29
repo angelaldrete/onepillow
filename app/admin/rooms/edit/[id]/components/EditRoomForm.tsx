@@ -14,7 +14,9 @@ const EditRoomForm: React.FC<EditRoomForm> = ({ id }) => {
 
   React.useEffect(() => {
     const getRoom = async () => {
-      const response = await fetch(`http://localhost:3000/api/room/${id}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/room/${id}`
+      );
       const data = await response.json();
       setRoom(data.room);
     };

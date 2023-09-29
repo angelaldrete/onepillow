@@ -15,7 +15,7 @@ const CustomerSearch = () => {
   React.useEffect(() => {
     async function getReservations() {
       const response = await fetch(
-        `http://localhost:3000/api/reservation?query=${query}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation?query=${query}`
       );
       const data = await response.json();
       return data.reservations;

@@ -68,9 +68,11 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ id, type }) => {
 
       try {
         const data = await fetchJson(
-          `http://localhost:3000/api/reservation/date/${formatDate(
-            arrivalDate
-          )}/${formatDate(departureDate)}`
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL
+          }/api/reservation/date/${formatDate(arrivalDate)}/${formatDate(
+            departureDate
+          )}`
         );
 
         if (data.error) {
@@ -159,7 +161,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ id, type }) => {
     if (type === FormType.UPDATE) {
       const getReservation = async () => {
         const response = await fetch(
-          `http://localhost:3000/api/reservation/${id}`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/${id}`
         );
         const data = await response.json();
         const reservation = data.reservation;
@@ -233,7 +235,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ id, type }) => {
     if (Object.keys(newErrors).length === 0) {
       try {
         const responseData = await fetchJson(
-          `http://localhost:3000/api/reservation/${id}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/${id}`,
           {
             method: "PUT",
             headers: {
