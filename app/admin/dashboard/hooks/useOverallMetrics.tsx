@@ -1,3 +1,4 @@
+"use client";
 const useOverallMetrics = () => {
   const listItems: MetricCard[] = [
     {

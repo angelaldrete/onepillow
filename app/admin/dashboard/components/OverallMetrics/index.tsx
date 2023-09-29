@@ -1,3 +1,4 @@
+"use client";
 import useOverallMetrics from "../../hooks/useOverallMetrics";
 import MetricItem from "./MetricItem";
 
