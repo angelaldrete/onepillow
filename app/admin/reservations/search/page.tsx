@@ -40,7 +40,7 @@ const CustomerSearch = () => {
           />
         </form>
       </header>
-      {reservations.length > 0 ? (
+      {reservations?.length > 0 ? (
         <ReservationsList reservations={reservations} />
       ) : (
         <div className="reservations__empty">

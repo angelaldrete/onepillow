@@ -40,7 +40,7 @@ const CustomerSearch = () => {
           />
         </form>
       </header>
-      {customers.length > 0 ? (
+      {customers?.length > 0 ? (
         <CustomersList customers={customers} />
       ) : (
         <div className="customers__empty">No customers found for "{query}"</div>
