@@ -33,7 +33,7 @@ const Customers = async () => {
           />
         </form>
       </header>
-      {customers.length > 0 ? (
+      {customers?.length > 0 ? (
         <CustomersList customers={customers} />
       ) : (
         <div className="customers__empty">No customers found</div>

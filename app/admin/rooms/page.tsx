@@ -30,7 +30,7 @@ const Rooms = async () => {
           />
         </form>
       </header>
-      {rooms.length > 0 ? (
+      {rooms?.length > 0 ? (
         <RoomsList rooms={rooms} />
       ) : (
         <div className="rooms__empty">No rooms found</div>

@@ -32,7 +32,7 @@ const Recent = () => {
       </ul>
 
       <ul className="recent__list">
-        {recentItems.map((item) => (
+        {recentItems?.map((item) => (
           <li
             key={item.id}
             className="recent__item"
