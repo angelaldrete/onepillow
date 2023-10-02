@@ -27,7 +27,12 @@ const DataChart = () => {
     getData();
   }, []);
 
-  if (data === null || data?.length === 0) {
+  if (
+    !data ||
+    typeof data === "undefined" ||
+    data.length === 0 ||
+    data === null
+  ) {
     return null;
   }
 
